@@ -6,15 +6,21 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "verify:booking-env": "node scripts/verify-booking-env.mjs"
   },
   "dependencies": {
+    "googleapis": "^171.4.0",
+    "luxon": "^3.7.2",
     "next": "latest",
+    "openai": "^6.34.0",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "zod": "^4.3.6"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.2.1",
+    "@types/luxon": "^3.7.1",
     "@types/node": "25.3.3",
     "@types/react": "19.2.14",
     "autoprefixer": "latest",

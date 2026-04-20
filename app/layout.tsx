@@ -1,9 +1,11 @@
 import type { Metadata, Viewport } from "next";
+import { FloatingNav } from "./components/FloatingNav";
 import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Solaris Scaling",
-  description: "Websites, AI booking & ads for local businesses — barbers, salons & more"
+  description:
+    "Barber shop websites with online booking, an AI assistant for DMs and FAQs, and local ads from Solaris Scaling."
 };
 
 export const viewport: Viewport = {
@@ -18,7 +20,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="bg-slate-950 text-slate-50 antialiased">
+      <body className="bg-neutral-950 text-neutral-50 antialiased">
+        <FloatingNav />
         {children}
       </body>
     </html>
