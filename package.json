@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && npm run postbuild:strip-maps",
+    "postbuild:strip-maps": "node -e \"const fs=require('fs'),p=require('path');function w(d){if(!fs.existsSync(d))return;for(const f of fs.readdirSync(d,{withFileTypes:true})){const fp=p.join(d,f.name);if(f.isDirectory())w(fp);else if(f.name.endsWith('.map'))fs.unlinkSync(fp);}}w('.next');w('.open-next');\"",
     "start": "next start",
     "lint": "next lint",
     "verify:booking-env": "node scripts/verify-booking-env.mjs",

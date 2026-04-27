@@ -1,4 +1,5 @@
-import { BookingConsultationAgent } from "./components/BookingConsultationAgent";
+// BookingConsultationAgent is temporarily disabled — re-enable by importing
+// from "./components/BookingConsultationAgent" and re-mounting below.
 import { Hero } from "./components/Hero";
 
 export default function HomePage() {
@@ -65,7 +66,16 @@ export default function HomePage() {
           <h2 className="text-lg font-semibold text-neutral-50">
             Book a consultation
           </h2>
-          <BookingConsultationAgent />
+          <p className="mt-4 text-sm text-neutral-400">
+            The chat assistant is temporarily offline. Email{" "}
+            <a
+              href="mailto:lukehamo15@gmail.com"
+              className="text-neutral-100 underline underline-offset-4 hover:text-white"
+            >
+              lukehamo15@gmail.com
+            </a>{" "}
+            to book a consultation.
+          </p>
         </section>
       </div>
     </main>
