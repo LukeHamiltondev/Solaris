@@ -8,6 +8,10 @@ node_modules
 out
 .open-next
 
+# typescript
+tsconfig.tsbuildinfo
+*.tsbuildinfo
+
 # misc
 .DS_Store
 *.pem

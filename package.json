@@ -5,27 +5,17 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build && npm run postbuild:strip-maps",
-    "postbuild:strip-maps": "node -e \"const fs=require('fs'),p=require('path');function w(d){if(!fs.existsSync(d))return;for(const f of fs.readdirSync(d,{withFileTypes:true})){const fp=p.join(d,f.name);if(f.isDirectory())w(fp);else if(f.name.endsWith('.map'))fs.unlinkSync(fp);}}w('.next');w('.open-next');\"",
+    "postbuild:strip-maps": "node -e \"const fs=require('fs'),p=require('path');function w(d){if(!fs.existsSync(d))return;for(const f of fs.readdirSync(d,{withFileTypes:true})){const fp=p.join(d,f.name);if(f.isDirectory())w(fp);else if(f.name.endsWith('.map'))fs.unlinkSync(fp);}}w('.next');\"",
     "start": "next start",
-    "lint": "next lint",
-    "verify:booking-env": "node scripts/verify-booking-env.mjs",
-    "preview:cf": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
-    "deploy:cf": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
-    "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts"
+    "lint": "next lint"
   },
   "dependencies": {
-    "googleapis": "^171.4.0",
-    "luxon": "^3.7.2",
     "next": "latest",
-    "openai": "^6.34.0",
     "react": "latest",
-    "react-dom": "latest",
-    "zod": "^4.3.6"
+    "react-dom": "latest"
   },
   "devDependencies": {
-    "@opennextjs/cloudflare": "^1.19.4",
     "@tailwindcss/postcss": "^4.2.1",
-    "@types/luxon": "^3.7.1",
     "@types/node": "25.3.3",
     "@types/react": "19.2.14",
     "autoprefixer": "latest",
@@ -33,7 +23,6 @@
     "eslint-config-next": "latest",
     "postcss": "latest",
     "tailwindcss": "latest",
-    "typescript": "latest",
-    "wrangler": "^4.84.1"
+    "typescript": "latest"
   }
 }
