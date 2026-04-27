@@ -1,25 +1,71 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+
 /** Royalty-free barber shop clip (Mixkit). Swap for `/videos/barber-hero.mp4` after adding your own file under `public/videos/`. */
-const HERO_VIDEO_SRC =
-  "https://assets.mixkit.co/videos/43223/43223-720.mp4";
+const HERO_VIDEO_SRC = "https://assets.mixkit.co/videos/43223/43223-720.mp4";
 
 export function Hero() {
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const [shouldPlayVideo, setShouldPlayVideo] = useState(false);
+
+  // Only load/play the hero video when:
+  //   (a) the user has not requested reduced motion
+  //   (b) they are not on a save-data / slow connection
+  // Everyone else just sees the dark fallback — saves a multi-MB download.
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    if (prefersReducedMotion) return;
+
+    const connection = (
+      navigator as Navigator & {
+        connection?: { saveData?: boolean; effectiveType?: string };
+      }
+    ).connection;
+    if (connection?.saveData) return;
+    if (
+      connection?.effectiveType &&
+      ["slow-2g", "2g"].includes(connection.effectiveType)
+    ) {
+      return;
+    }
+
+    setShouldPlayVideo(true);
+  }, []);
+
+  useEffect(() => {
+    if (!shouldPlayVideo) return;
+    const el = videoRef.current;
+    if (!el) return;
+    el.play().catch(() => {
+      // Autoplay can fail on some mobile browsers; that's fine — the poster/gradient fallback stays visible.
+    });
+  }, [shouldPlayVideo]);
+
   return (
     <section
       className="relative flex min-h-[100dvh] flex-col"
       aria-label="Solaris hero"
     >
-      <div className="pointer-events-none absolute inset-0 overflow-hidden bg-neutral-950">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          className="absolute left-1/2 top-1/2 min-h-full min-w-full -translate-x-1/2 -translate-y-1/2 scale-[1.06] object-cover blur-sm"
-        >
-          <source src={HERO_VIDEO_SRC} type="video/mp4" />
-        </video>
-        <div className="absolute inset-0 bg-neutral-950/50" />
+      <div className="pointer-events-none absolute inset-0 overflow-hidden bg-gradient-to-br from-neutral-950 via-neutral-900 to-neutral-950">
+        {shouldPlayVideo && (
+          <video
+            ref={videoRef}
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            aria-hidden
+            className="absolute left-1/2 top-1/2 min-h-full min-w-full -translate-x-1/2 -translate-y-1/2 scale-[1.06] object-cover blur-sm motion-reduce:hidden"
+          >
+            <source src={HERO_VIDEO_SRC} type="video/mp4" />
+          </video>
+        )}
+        <div className="absolute inset-0 bg-neutral-950/55" />
       </div>
 
       <header className="relative z-10 flex items-center justify-between gap-4 px-4 pb-4 pt-14 md:px-8 md:pt-16">
@@ -33,7 +79,7 @@ export function Hero() {
         </div>
         <a
           href="#book"
-          className="rounded-full bg-neutral-100 px-4 py-2 text-sm font-semibold text-neutral-950 shadow-md shadow-black/25 transition hover:bg-white"
+          className="rounded-full bg-neutral-100 px-4 py-2 text-sm font-semibold text-neutral-950 shadow-md shadow-black/25 transition hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
         >
           Book a demo
         </a>
@@ -50,13 +96,13 @@ export function Hero() {
         <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:gap-4">
           <a
             href="#book"
-            className="inline-flex min-w-[200px] items-center justify-center rounded-full bg-neutral-100 px-8 py-3 text-sm font-semibold text-neutral-950 shadow-lg shadow-black/30 transition hover:bg-white"
+            className="inline-flex min-w-[200px] items-center justify-center rounded-full bg-neutral-100 px-8 py-3 text-sm font-semibold text-neutral-950 shadow-lg shadow-black/30 transition hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
           >
             Book a call
           </a>
           <a
             href="#services"
-            className="text-sm font-medium text-neutral-300 underline-offset-4 [text-shadow:0_1px_8px_rgba(0,0,0,0.9)] transition hover:text-white hover:underline"
+            className="text-sm font-medium text-neutral-300 underline-offset-4 [text-shadow:0_1px_8px_rgba(0,0,0,0.9)] transition hover:text-white hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
           >
             Services
           </a>
@@ -68,7 +114,7 @@ export function Hero() {
         aria-hidden
       >
         <div className="flex h-8 w-5 justify-center rounded-full border border-white/15 bg-neutral-950/35 backdrop-blur-sm">
-          <div className="mt-1.5 h-1.5 w-0.5 animate-bounce rounded-full bg-neutral-400" />
+          <div className="mt-1.5 h-1.5 w-0.5 animate-bounce rounded-full bg-neutral-400 motion-reduce:animate-none" />
         </div>
       </div>
     </section>

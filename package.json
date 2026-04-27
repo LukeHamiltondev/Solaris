@@ -7,7 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "verify:booking-env": "node scripts/verify-booking-env.mjs"
+    "verify:booking-env": "node scripts/verify-booking-env.mjs",
+    "preview:cf": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
+    "deploy:cf": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+    "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts"
   },
   "dependencies": {
     "googleapis": "^171.4.0",
@@ -19,6 +22,7 @@
     "zod": "^4.3.6"
   },
   "devDependencies": {
+    "@opennextjs/cloudflare": "^1.19.4",
     "@tailwindcss/postcss": "^4.2.1",
     "@types/luxon": "^3.7.1",
     "@types/node": "25.3.3",
@@ -28,6 +32,7 @@
     "eslint-config-next": "latest",
     "postcss": "latest",
     "tailwindcss": "latest",
-    "typescript": "latest"
+    "typescript": "latest",
+    "wrangler": "^4.84.1"
   }
 }

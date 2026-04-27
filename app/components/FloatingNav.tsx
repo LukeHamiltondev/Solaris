@@ -4,10 +4,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const linkBase =
-  "rounded-full px-3 py-2 text-sm font-medium text-neutral-400 transition hover:bg-white/5 hover:text-neutral-100 md:px-4";
+  "rounded-full px-3 py-2 text-sm font-medium text-neutral-400 transition hover:bg-white/5 hover:text-neutral-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white md:px-4";
+
+const linkActive = "bg-white/10 text-neutral-50";
 
 export function FloatingNav() {
   const pathname = usePathname();
+  const isHome = pathname === "/";
   const isExamples = pathname === "/examples";
 
   return (
@@ -16,12 +19,18 @@ export function FloatingNav() {
       aria-label="Main"
     >
       <div className="pointer-events-auto flex items-center rounded-full border border-white/10 bg-neutral-950/80 py-1 pl-1 pr-1 shadow-xl shadow-black/40 backdrop-blur-md md:py-1.5 md:pl-1.5 md:pr-1.5">
-        <Link href="/" className={linkBase}>
+        <Link
+          href="/"
+          aria-current={isHome ? "page" : undefined}
+          className={`${linkBase} ${isHome ? linkActive : ""}`}
+        >
           Home
         </Link>
         <Link
           href="/examples"
-          className={`${linkBase} ${isExamples ? "bg-white/10 text-neutral-50" : ""}`}
+          aria-current={isExamples ? "page" : undefined}
+          className={`${linkBase} ${isExamples ? linkActive : ""}`}
+          prefetch
         >
           Examples
         </Link>
