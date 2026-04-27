@@ -1,0 +1,6 @@
+# Cloudflare Pages configuration.
+# `pages_build_output_dir` tells Pages where to find the static site to deploy.
+# Next.js with `output: "export"` writes the built site to `./out`.
+name = "solaris"
+compatibility_date = "2026-04-23"
+pages_build_output_dir = "./out"
