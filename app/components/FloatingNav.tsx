@@ -10,8 +10,11 @@ const linkActive = "bg-white/10 text-neutral-50";
 
 export function FloatingNav() {
   const pathname = usePathname();
+  // With `trailingSlash: true` in next.config, routes resolve as "/" and
+  // "/examples/" — match either form so the active-link styling works on
+  // both the dev server and the static export.
   const isHome = pathname === "/";
-  const isExamples = pathname === "/examples";
+  const isExamples = pathname === "/examples" || pathname === "/examples/";
 
   return (
     <nav
@@ -27,7 +30,7 @@ export function FloatingNav() {
           Home
         </Link>
         <Link
-          href="/examples"
+          href="/examples/"
           aria-current={isExamples ? "page" : undefined}
           className={`${linkBase} ${isExamples ? linkActive : ""}`}
           prefetch
