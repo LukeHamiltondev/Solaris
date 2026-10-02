@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ViewTransition } from "react";
+import { Icon } from "./icons";
 
 /** Wraps a page's content so it fades and rises in when navigated to. */
 export function Page({ children }: { children: React.ReactNode }) {
@@ -23,16 +24,14 @@ export function ButtonLink({
 }) {
   const styles =
     variant === "primary"
-      ? "sheen bg-orbit-200 text-ink-950 hover:bg-orbit-100 shadow-[0_0_40px_-8px] shadow-orbit-500/60"
+      ? "sheen bg-orbit-200 text-ink-950 hover:bg-orbit-100 shadow-[0_14px_32px_-14px] shadow-black/70"
       : "border border-white/15 text-mist hover:border-white/30 hover:bg-white/5";
   const external = href.startsWith("http") || href.startsWith("mailto:");
   const cls = `group inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-[15px] font-semibold transition-colors ${styles} ${className}`;
   const inner = (
     <>
       {children}
-      <span aria-hidden="true" className="transition-transform duration-500 ease-out-expo group-hover:translate-x-1">
-        →
-      </span>
+      <Icon name="arrow" className="size-4 transition-transform duration-500 ease-out-expo group-hover:translate-x-1" />
     </>
   );
   return external ? (

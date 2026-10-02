@@ -114,6 +114,32 @@ html.lenis body {
   opacity: 0;
   animation: core-in 0.7s var(--ease-out-expo) 0.1s forwards;
 }
+/* Small copy in the hero sits on a soft ink pool, so the orbits pass behind the headline but never
+   through body text or controls. */
+.ink-plate {
+  position: relative;
+}
+.ink-plate::before {
+  content: "";
+  position: absolute;
+  inset: -1.5rem -2.5rem;
+  z-index: -1;
+  background: radial-gradient(closest-side, var(--color-ink-950) 72%, transparent);
+  pointer-events: none;
+}
+
+/* The home hero's big orbits: slow, GPU-only turns on desktop; still on phones. */
+.hero-orbit {
+  animation: spin linear infinite;
+  will-change: transform;
+}
+@media (hover: none), (max-width: 1023px) {
+  .hero-orbit {
+    animation: none;
+    will-change: auto;
+  }
+}
+
 .orbit-layer {
   transform-origin: 50% 50%;
   animation: spin linear infinite;
@@ -321,7 +347,8 @@ html.lenis body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
   }
-  .orbit-layer {
+  .orbit-layer,
+  .hero-orbit {
     animation: none !important;
   }
   .word-rise,

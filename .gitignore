@@ -28,3 +28,7 @@ npm-debug.log*
 .vscode
 *.swp
 *.swo
+
+# Impeccable review captures (regenerated each review)
+.impeccable/review/
+.impeccable/config.local.json

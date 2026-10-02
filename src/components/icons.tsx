@@ -22,6 +22,8 @@ const paths = {
     </>
   ),
   check: <path d="M5 12.5l4.5 4.5L19 7.5" />,
+  arrow: <path d="M4.5 12h15M13.5 6l6 6-6 6" />,
+  external: <path d="M8 6h10v10M18 6L6 18" />,
 } as const;
 
 export type IconName = keyof typeof paths;

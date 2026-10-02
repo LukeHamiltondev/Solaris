@@ -7,7 +7,6 @@ import { Icon } from "@/components/icons";
 import { CtaBand, Page, SectionHeading } from "@/components/ui";
 import { Testimonial } from "@/components/testimonial";
 
-
 export default function HomePage() {
   return (
     <Page>

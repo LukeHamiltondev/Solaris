@@ -1,150 +1,126 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { hero } from "@/content/site";
-import { OrbitMark } from "./orbit-mark";
-import { Starfield } from "./starfield";
-import { ButtonLink, Eyebrow } from "./ui";
+import Link from "next/link";
+import { useState } from "react";
+import { hero, services } from "@/content/site";
+import { AdminDemo } from "./admin-demo";
+import { ButtonLink } from "./ui";
+
+// The logo's three orbits at full scale, centred on the phone: the client's site sits at the core.
+// Sizes bleed past the viewport on purpose; strokes stay hairline at any size.
+const orbits = [
+  { size: "max(24rem, 72vmin)", dash: "62 38", rotate: 200, speed: 70, stroke: "var(--ring-1)", width: 1.5, opacity: 0.9 },
+  { size: "max(56rem, 112vmin)", dash: "70 30", rotate: 250, speed: 110, stroke: "var(--ring-2)", width: 1, opacity: 0.7 },
+  { size: "max(76rem, 152vmin)", dash: "78 22", rotate: 300, speed: 160, stroke: "var(--ring-3)", width: 1, opacity: 0.5 },
+] as const;
 
 /**
- * The home page's opening: the orbit mark draws itself on while the headline rises in word by word
- * (both in CSS, so they play before the scripts arrive). Then the rings keep turning, tilt toward
- * the cursor, and a soft glow follows it across the section.
+ * The home page's opening. The promise and a working way to start a quote on the left; on the right,
+ * a real client's admin screen on a phone at the centre of the logo's orbits, changing stock by itself
+ * until the visitor takes over.
  */
 export function Hero() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const orbitRef = useRef<HTMLDivElement>(null);
-  const glowRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const section = sectionRef.current;
-    const orbit = orbitRef.current;
-    const glow = glowRef.current;
-    if (!section || !orbit || !glow) return;
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduce) return;
-
-    // The whole hero drifts up and fades as you scroll away from it (phones skip this: it competes with touch scrolling).
-    const ctx = gsap.context(() => {
-      if (!window.matchMedia("(min-width: 768px)").matches) return;
-      gsap.to("[data-hero-content]", {
-        yPercent: -18,
-        autoAlpha: 0.15,
-        ease: "none",
-        scrollTrigger: { trigger: section, start: "top top", end: "bottom top", scrub: true },
-      });
-      gsap.to(orbit, {
-        yPercent: 22,
-        scale: 0.9,
-        ease: "none",
-        scrollTrigger: { trigger: section, start: "top top", end: "bottom top", scrub: true },
-      });
-    }, section);
-
-    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return () => ctx.revert();
-
-    const rotX = gsap.quickTo(orbit, "rotationX", { duration: 1.2, ease: "power3.out" });
-    const rotY = gsap.quickTo(orbit, "rotationY", { duration: 1.2, ease: "power3.out" });
-    const glowX = gsap.quickTo(glow, "x", { duration: 0.9, ease: "power3.out" });
-    const glowY = gsap.quickTo(glow, "y", { duration: 0.9, ease: "power3.out" });
-    gsap.set(orbit, { transformPerspective: 900 });
-
-    const move = (e: PointerEvent) => {
-      const r = section.getBoundingClientRect();
-      const px = (e.clientX - r.left) / r.width - 0.5;
-      const py = (e.clientY - r.top) / r.height - 0.5;
-      rotY(px * 18);
-      rotX(-py * 18);
-      glowX(e.clientX - r.left);
-      glowY(e.clientY - r.top);
-      glow.style.opacity = "1";
-    };
-    const leave = () => {
-      rotX(0);
-      rotY(0);
-      glow.style.opacity = "0";
-    };
-    section.addEventListener("pointermove", move);
-    section.addEventListener("pointerleave", leave);
-    return () => {
-      section.removeEventListener("pointermove", move);
-      section.removeEventListener("pointerleave", leave);
-      ctx.revert();
-    };
-  }, []);
+  const [live, setLive] = useState(false);
 
   const words = hero.headline.split(" ");
+  const lead = words.slice(0, -3).join(" ");
+  const emphasis = words.slice(-3).join(" ");
 
   return (
-    <section
-      ref={sectionRef}
-      className="grain relative flex min-h-[100svh] items-center overflow-hidden px-6 pt-32 pb-20"
-    >
-      <Starfield />
-      <div
-        ref={glowRef}
-        aria-hidden="true"
-        className="pointer-events-none absolute top-0 left-0 size-[36rem] -translate-1/2 blob text-orbit-500/20 opacity-0 transition-opacity duration-700"
-      />
-      <div
-        aria-hidden="true"
-        className="absolute top-1/2 right-[-10%] size-[50rem] -translate-y-1/2 blob text-orbit-700/20"
-      />
-
-      <div className="relative mx-auto grid w-full max-w-6xl items-center gap-12 lg:grid-cols-[1.15fr_1fr]">
-        <div data-hero-content>
-          <div className="fade-up" style={{ animationDelay: "0.15s" }}>
-            <Eyebrow>{hero.eyebrow}</Eyebrow>
-          </div>
-          <h1 className="mt-6 text-[clamp(3rem,8vw,6.25rem)] leading-[0.95] font-semibold tracking-[-0.045em]">
-            {words.map((word, i) => (
-              <span key={i}>
-                <span
-                  className={`word-rise ${i >= words.length - 2 ? "text-gradient pb-[0.08em]" : ""}`}
-                  style={{ animationDelay: `${0.2 + i * 0.1}s` }}
-                >
-                  {word}
-                </span>
-                {i < words.length - 1 && " "}
-              </span>
-            ))}
+    <section className="relative overflow-hidden px-6 pt-32 pb-12 md:pt-36 lg:flex lg:min-h-svh lg:items-center lg:pb-20">
+      <div className="relative mx-auto grid w-full max-w-6xl items-center gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:gap-10">
+        <div className="relative z-10">
+          <h1
+            className="fade-up text-[clamp(3rem,7.4vw,6rem)] leading-[0.95] font-semibold tracking-[-0.04em] text-balance"
+            style={{ animationDelay: "0.1s" }}
+          >
+            {lead} <span className="text-orbit-200">{emphasis}</span>
           </h1>
           <p
-            className="fade-up mt-8 max-w-xl text-lg leading-relaxed text-pretty text-muted md:text-xl"
-            style={{ animationDelay: "0.95s" }}
+            className="ink-plate fade-up mt-7 max-w-[34rem] text-lg leading-relaxed text-pretty text-muted md:text-xl"
+            style={{ animationDelay: "0.6s" }}
           >
             {hero.sub}
           </p>
-          <div className="fade-up mt-10 flex flex-wrap gap-3" style={{ animationDelay: "1.1s" }}>
-            <ButtonLink href="/contact/">Get a free quote</ButtonLink>
-            <ButtonLink href="/work/" variant="ghost">
-              See my work
-            </ButtonLink>
+
+          <div className="ink-plate fade-up mt-10" style={{ animationDelay: "0.8s" }}>
+            <p id="hero-need" className="text-sm font-medium text-mist">
+              What do you need?
+            </p>
+            <ul aria-labelledby="hero-need" className="mt-3 flex flex-wrap gap-2">
+              {services.map((s) => (
+                <li key={s.need}>
+                  <Link
+                    href={`/contact/?need=${encodeURIComponent(s.need)}`}
+                    className="inline-flex items-center rounded-full border border-white/15 px-4 py-2.5 text-[15px] text-mist transition-colors hover:border-orbit-200 hover:bg-orbit-200/10"
+                  >
+                    {s.need}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-4">
+              <ButtonLink href="/contact/">Get a free quote</ButtonLink>
+              <Link
+                href="/work/"
+                className="text-[15px] font-semibold text-mist underline decoration-orbit-400/60 underline-offset-[6px] transition-colors hover:decoration-orbit-100"
+              >
+                See my work
+              </Link>
+            </div>
           </div>
         </div>
 
-        <div className="relative mx-auto w-full max-w-[26rem] lg:max-w-none">
-          <div ref={orbitRef} className="relative aspect-square">
-            <div
-              aria-hidden="true"
-              className="fade-up absolute inset-[6%] blob text-orbit-400/30"
-              style={{ animationDelay: "0.6s" }}
-            />
-            <OrbitMark intro spin className="relative size-full lg:drop-shadow-[0_0_30px_color-mix(in_oklab,var(--color-orbit-400)_35%,transparent)]" />
+        <figure className="relative mx-auto grid w-full max-w-[34rem] place-items-center">
+          <div className="fade-up relative lg:py-10" style={{ animationDelay: "0.45s" }}>
+            <div aria-hidden="true" className="pointer-events-none absolute top-1/2 left-1/2 -z-10 size-0">
+              {orbits.map((o, i) => (
+                <svg
+                  key={o.size}
+                  viewBox="0 0 100 100"
+                  // Phones get the inner orbit only, rising from behind the phone into the buttons.
+                  className={`hero-orbit absolute -translate-1/2 ${i > 0 ? "hidden lg:block" : ""}`}
+                  style={{ width: o.size, height: o.size, animationDuration: `${o.speed}s`, animationDelay: `${-i * 9}s` }}
+                >
+                  <circle
+                    cx="50"
+                    cy="50"
+                    r="49.5"
+                    fill="none"
+                    stroke={o.stroke}
+                    strokeOpacity={i === 0 && live ? 1 : o.opacity}
+                    strokeWidth={i === 0 && live ? o.width * 2 : o.width}
+                    vectorEffect="non-scaling-stroke"
+                    strokeLinecap="round"
+                    pathLength={100}
+                    strokeDasharray={o.dash}
+                    transform={`rotate(${o.rotate} 50 50)`}
+                    className="transition-[stroke-opacity,stroke-width] duration-700"
+                  />
+                </svg>
+              ))}
+            </div>
+            <div className="relative h-[31rem] w-[16.5rem] rounded-[2.6rem] border border-white/15 bg-ink-800 p-2 shadow-[0_50px_100px_-30px_var(--frame-shadow)] sm:h-[32rem] sm:w-[17.5rem]">
+              <div className="relative h-full overflow-hidden rounded-[2.1rem]">
+                <AdminDemo onLive={setLive} />
+                <span aria-hidden="true" className="absolute top-2 left-1/2 h-5 w-20 -translate-x-1/2 rounded-full bg-black" />
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
 
-      <div
-        className="fade-up absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-[11px] tracking-[0.25em] text-subtle uppercase md:flex"
-        style={{ animationDelay: "1.6s" }}
-        aria-hidden="true"
-      >
-        Scroll
-        <span className="relative h-10 w-px overflow-hidden bg-white/10">
-          <span className="absolute inset-x-0 top-0 h-1/2 animate-[scroll-cue_2s_ease-in-out_infinite] bg-orbit-200" />
-        </span>
+          <figcaption
+            aria-live="polite"
+            className="fade-up relative mt-8 max-w-[19rem] rounded-xl bg-ink-950/85 px-3 py-2 text-center text-sm leading-relaxed text-subtle lg:mt-0"
+            style={{ animationDelay: "0.9s" }}
+          >
+            {live ? (
+              <span className="text-mist">Saved. On the real site, that change is live in a few minutes.</span>
+            ) : (
+              "The stock screen I built for Wixted Engineering. Go on, press the buttons."
+            )}
+            <span className="mt-1 block text-xs">Demo copy: nothing here changes their live site.</span>
+          </figcaption>
+        </figure>
       </div>
     </section>
   );
