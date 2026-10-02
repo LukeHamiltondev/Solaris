@@ -129,7 +129,7 @@ export function CtaBand() {
     <section className="relative overflow-hidden px-6 py-28 md:py-36">
       <div
         aria-hidden="true"
-        className="absolute top-1/2 left-1/2 size-[44rem] -translate-1/2 rounded-full bg-orbit-500/15 blur-[120px]"
+        className="absolute top-1/2 left-1/2 size-[44rem] -translate-1/2 blob text-orbit-500/15"
       />
       <div className="relative mx-auto max-w-3xl text-center" data-reveal>
         <h2 className="text-4xl font-semibold tracking-[-0.03em] text-balance md:text-6xl">

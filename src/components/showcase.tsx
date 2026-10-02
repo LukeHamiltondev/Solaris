@@ -67,7 +67,7 @@ export function Showcase() {
 
   return (
     <section ref={sectionRef} id="work" className="relative overflow-hidden px-6 py-24 lg:flex lg:h-svh lg:items-center lg:py-0">
-      <div aria-hidden="true" className="absolute top-1/3 left-1/4 size-[40rem] rounded-full bg-orbit-700/15 blur-[140px]" />
+      <div aria-hidden="true" className="absolute top-1/3 left-1/4 size-[40rem] blob text-orbit-700/15" />
       <div className="relative mx-auto grid w-full max-w-6xl items-center gap-14 lg:grid-cols-[0.8fr_1.2fr] lg:pt-16">
         <div>
           <Eyebrow>Featured work</Eyebrow>

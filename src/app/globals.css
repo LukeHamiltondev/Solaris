@@ -40,107 +40,6 @@
   --frame-shadow: rgb(0 0 0 / 0.85);
 }
 
-/* ---------- Colour themes (being sampled; see src/content/themes.ts) ---------- */
-
-/* Navy and gold. */
-html[data-theme="solar"] {
-  --color-ink-950: #0a0f1c;
-  --color-ink-900: #0e1424;
-  --color-ink-800: #151c2f;
-  --color-ink-700: #1f2840;
-  --color-ink-600: #2c3654;
-  --color-mist: #f3efe6;
-  --color-muted: #aeb3c2;
-  --color-subtle: #8a90a3;
-  --color-orbit-100: #ffe3a3;
-  --color-orbit-200: #ffc857;
-  --color-orbit-400: #f6a43a;
-  --color-orbit-500: #ea7f2c;
-  --color-orbit-700: #b4521c;
-  --ring-1: #ffd77a;
-  --ring-2: #f6a43a;
-  --ring-3: #e0662a;
-  --intro-from: #1a2236;
-  --intro-to: #0a0f1c;
-}
-
-/* Deep teal and aqua. */
-html[data-theme="ocean"] {
-  --color-ink-950: #061416;
-  --color-ink-900: #0a1b1e;
-  --color-ink-800: #10262a;
-  --color-ink-700: #183439;
-  --color-ink-600: #23454b;
-  --color-mist: #e6f4f1;
-  --color-muted: #9fbab7;
-  --color-subtle: #7f9c99;
-  --color-orbit-100: #b8f5e8;
-  --color-orbit-200: #6ee7d0;
-  --color-orbit-400: #2dc5ad;
-  --color-orbit-500: #14a08d;
-  --color-orbit-700: #0d6e62;
-  --ring-1: #a7f3e4;
-  --ring-2: #34d1b6;
-  --ring-3: #0f9c88;
-  --intro-from: #12292d;
-  --intro-to: #061416;
-}
-
-/* Light themes: the accent scale runs the other way (100 is the strongest), and "white" overlays turn dark. */
-html[data-theme="daylight"],
-html[data-theme="cobalt"] {
-  color-scheme: light;
-  --grad-3: var(--color-orbit-400);
-}
-
-/* Warm cream and coral. */
-html[data-theme="daylight"] {
-  --color-ink-950: #faf7f2;
-  --color-ink-900: #f3eee5;
-  --color-ink-800: #fffdf9;
-  --color-ink-700: #e8e1d5;
-  --color-ink-600: #d9d0c1;
-  --color-mist: #1d1b18;
-  --color-muted: #5e5850;
-  --color-subtle: #6f685e;
-  --color-white: #1d1b18;
-  --color-orbit-100: #a63a17;
-  --color-orbit-200: #b5401b;
-  --color-orbit-400: #e06a3e;
-  --color-orbit-500: #f08c63;
-  --color-orbit-700: #f7c3ad;
-  --ring-1: #b5401b;
-  --ring-2: #e97a4c;
-  --ring-3: #f4a988;
-  --intro-from: #fffdf9;
-  --intro-to: #efe8dc;
-  --frame-shadow: rgb(70 45 20 / 0.28);
-}
-
-/* Clean white and electric blue. */
-html[data-theme="cobalt"] {
-  --color-ink-950: #f5f7fb;
-  --color-ink-900: #edf1f7;
-  --color-ink-800: #ffffff;
-  --color-ink-700: #dfe5ef;
-  --color-ink-600: #cbd3e1;
-  --color-mist: #0f1729;
-  --color-muted: #4a5568;
-  --color-subtle: #5f6b82;
-  --color-white: #0f1729;
-  --color-orbit-100: #1d3cc4;
-  --color-orbit-200: #2950e8;
-  --color-orbit-400: #4f7bff;
-  --color-orbit-500: #7c9cff;
-  --color-orbit-700: #c3d2ff;
-  --ring-1: #2950e8;
-  --ring-2: #4f7bff;
-  --ring-3: #8fabff;
-  --intro-from: #ffffff;
-  --intro-to: #e8eef8;
-  --frame-shadow: rgb(20 35 80 / 0.25);
-}
-
 @layer base {
   html {
     background: var(--color-ink-950);
@@ -215,10 +114,10 @@ html.lenis body {
   opacity: 0;
   animation: core-in 0.7s var(--ease-out-expo) 0.1s forwards;
 }
-.orbit-spin {
-  transform-box: view-box;
+.orbit-layer {
   transform-origin: 50% 50%;
   animation: spin linear infinite;
+  will-change: transform;
 }
 @keyframes ring-draw {
   to {
@@ -280,6 +179,14 @@ html.lenis body {
   -webkit-backdrop-filter: blur(16px) saturate(140%);
 }
 
+/* Soft colour glows. A radial gradient looks like a blurred circle but costs nothing to scroll past,
+   unlike filter: blur(), which phones re-render constantly. Colour and strength come from text-*. */
+.blob {
+  border-radius: 9999px;
+  background: radial-gradient(closest-side, currentColor, transparent);
+  pointer-events: none;
+}
+
 .grain::after {
   content: "";
   position: absolute;
@@ -289,11 +196,28 @@ html.lenis body {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
+/* Phones: a background blur behind the fixed header is redone on every scrolled frame, and the noise
+   texture is repainted with the hero. Both are swapped for cheap equivalents on small screens. */
+@media (max-width: 767px) {
+  .glass {
+    background: color-mix(in oklab, var(--color-ink-900) 94%, transparent);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+  .grain::after {
+    display: none;
+  }
+}
+
 /* Cards that tilt toward the cursor, with a glow that follows it. Driven by --rx, --ry, --mx, --my. */
 .tilt {
   transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
   transition: transform 0.5s var(--ease-out-expo);
-  will-change: transform;
+}
+@media (hover: hover) and (pointer: fine) {
+  .tilt {
+    will-change: transform;
+  }
 }
 .tilt.is-tilting {
   transition: transform 0.12s linear;
@@ -341,45 +265,6 @@ html.lenis body {
 .glow-border:hover::before,
 .glow-border:hover::after {
   opacity: 1;
-}
-
-/* "Most popular" pricing card: a gradient border that slowly orbits. */
-@property --angle {
-  syntax: "<angle>";
-  initial-value: 0deg;
-  inherits: false;
-}
-.orbit-border {
-  position: relative;
-  isolation: isolate;
-}
-.orbit-border::before {
-  content: "";
-  position: absolute;
-  inset: -1px;
-  border-radius: inherit;
-  padding: 1.5px;
-  background: conic-gradient(
-    from var(--angle),
-    var(--color-orbit-700),
-    var(--color-orbit-100),
-    var(--color-orbit-500),
-    var(--color-orbit-700) 60%,
-    var(--color-orbit-200),
-    var(--color-orbit-700)
-  );
-  -webkit-mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  animation: orbit-angle 6s linear infinite;
-  z-index: -1;
-}
-@keyframes orbit-angle {
-  to {
-    --angle: 360deg;
-  }
 }
 
 /* Buttons: a sheen slides across on hover. */
@@ -436,7 +321,7 @@ html.lenis body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
   }
-  .orbit-spin {
+  .orbit-layer {
     animation: none !important;
   }
   .word-rise,

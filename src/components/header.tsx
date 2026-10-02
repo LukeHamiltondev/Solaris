@@ -120,7 +120,7 @@ export function Header() {
 
       <div
         id="mobile-menu"
-        className={`fixed inset-0 -z-10 flex flex-col bg-ink-950/96 backdrop-blur-xl justify-center px-8 transition-[opacity,visibility] duration-500 md:hidden ${
+        className={`fixed inset-0 -z-10 flex flex-col justify-center bg-ink-950/97 px-8 transition-[opacity,visibility] duration-500 md:hidden ${
           open ? "visible opacity-100" : "invisible opacity-0"
         }`}
       >

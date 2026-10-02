@@ -10,7 +10,10 @@ export function Starfield() {
     const canvas = ref.current;
     const ctx = canvas?.getContext("2d");
     if (!canvas || !ctx) return;
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    // Phones get a still starfield: redrawing a full-screen canvas every frame is what made scrolling stutter.
+    const reduce =
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+      !window.matchMedia("(min-width: 768px) and (hover: hover)").matches;
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
 
     type Star = { x: number; y: number; r: number; speed: number; phase: number; hue: number };
@@ -35,19 +38,11 @@ export function Starfield() {
       }));
     };
 
-    // Star colours follow the active theme.
-    const colours = { accent: "", base: "" };
-    const readColours = () => {
-      const css = getComputedStyle(document.documentElement);
-      colours.accent = css.getPropertyValue("--color-orbit-200").trim();
-      colours.base = css.getPropertyValue("--color-mist").trim();
+    const css = getComputedStyle(document.documentElement);
+    const colours = {
+      accent: css.getPropertyValue("--color-orbit-200").trim(),
+      base: css.getPropertyValue("--color-mist").trim(),
     };
-    readColours();
-    const themeWatch = new MutationObserver(() => {
-      readColours();
-      if (reduce) draw(0);
-    });
-    themeWatch.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
 
     let raf = 0;
     let visible = true;
@@ -89,7 +84,6 @@ export function Starfield() {
     return () => {
       cancelAnimationFrame(raf);
       io.disconnect();
-      themeWatch.disconnect();
       ro.disconnect();
     };
   }, []);

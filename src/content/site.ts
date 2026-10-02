@@ -6,8 +6,6 @@ export const site = {
   url: "https://solarisscaling.com",
   email: "lukehamo15@gmail.com",
   github: "https://github.com/LukeHamiltondev",
-  /** Shows the colour switcher in the corner while a palette is being chosen. */
-  showThemePicker: true,
   description:
     "Fast, custom websites for growing businesses, with the quote forms, catalogues and admin tools that turn visitors into customers.",
 } as const;
@@ -68,59 +66,65 @@ export const steps = [
   { title: "Launch & support", body: "I put it live, set up analytics, and stay on hand afterwards." },
 ] as const;
 
-export const packages = [
+// What's on offer. There are no fixed packages: every project gets its own quote.
+export const services = [
   {
-    name: "Launch",
-    price: "€1,500",
-    for: "New and small businesses",
+    name: "Business websites",
+    need: "A new website",
+    for: "New and growing businesses",
     features: [
-      "Up to 5 pages",
       "Custom, mobile-first design",
-      "Contact form",
-      "Basic SEO and analytics",
-      "2 rounds of changes",
-    ],
-    popular: false,
-  },
-  {
-    name: "Growth",
-    price: "€3,500",
-    for: "Businesses that want more leads",
-    features: [
-      "Up to 12 pages",
-      "Quote or booking forms",
-      "Blog or editable content",
-      "Full SEO setup",
+      "Contact, quote or booking forms",
+      "Editable pages and blog",
+      "SEO and analytics set up",
       "Google Business profile help",
     ],
-    popular: true,
   },
   {
-    name: "Commerce & custom",
-    price: "€6,000",
-    for: "Catalogues, shops and tools",
+    name: "Catalogues & shops",
+    need: "A catalogue or shop",
+    for: "Businesses with lots of products",
     features: [
-      "Product catalogue or shop",
-      "Quote basket",
+      "Searchable product catalogue",
+      "Quote basket or online checkout",
       "Phone-friendly admin panel",
-      "Integrations",
-      "AI assistant",
+      "Moving products from your old site",
+      "AI product assistant",
     ],
-    popular: false,
   },
+  {
+    name: "Custom tools",
+    need: "A custom tool",
+    for: "Work your website could take on",
+    features: [
+      "Admin panels and dashboards",
+      "Booking and job systems",
+      "Integrations with tools you use",
+      "Spreadsheet imports and exports",
+      "Automations that save hours",
+    ],
+  },
+] as const;
+
+export const quoteSteps = [
+  { title: "Tell me what you need", body: "Fill in the form or send an email. A few lines is plenty." },
+  { title: "Quick call", body: "We talk through your business, your customers and what the site has to do." },
+  { title: "Fixed quote", body: "You get one clear price and a timeline, free and with no obligation." },
 ] as const;
 
 export const carePlan = {
   name: "Care plan",
-  price: "€60",
-  per: "/month",
-  body: "Hosting, updates, backups, small content edits and a monthly health check. Available on every package.",
+  body: "Hosting, updates, backups, small content edits and a monthly health check, so you never have to think about it. Add it to any project.",
 } as const;
 
 export const faqs = [
   {
+    q: "How much does a website cost?",
+    a: "Every project is different, so I quote each one rather than squeezing it into a package. Tell me what you need and you'll get a fixed price, free and with no obligation.",
+  },
+  {
     q: "How long does it take?",
-    a: "Launch sites usually take 2 to 3 weeks and Growth sites 4 to 6. Custom projects depend on scope, and you'll get a timeline with your quote.",
+    a: "Most sites take 2 to 6 weeks, depending on what they need to do. You'll get a timeline with your quote.",
   },
   {
     q: "Do I own the website?",
@@ -136,12 +140,11 @@ export const faqs = [
   },
   {
     q: "How does payment work?",
-    a: "50% to start and 50% at launch. Prices are starting points and exclude VAT; your quote is fixed before work begins.",
+    a: "50% to start and 50% at launch. Your quote is fixed before any work begins, so the price won't creep.",
   },
 ] as const;
 
-export const enquiryTypes = ["Launch", "Growth", "Commerce & custom", "Not sure yet"] as const;
-export const budgets = ["Under €2k", "€2k–5k", "€5k+", "Not sure"] as const;
+export const enquiryTypes = [...services.map((s) => s.need), "Not sure yet"] as const;
 
 export const about = {
   heading: "Hi, I'm Luke.",

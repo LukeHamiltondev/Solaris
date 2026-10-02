@@ -23,7 +23,7 @@ export default function AboutPage() {
             ))}
           </div>
           <div className="fade-up relative mx-auto aspect-square w-full max-w-sm" style={{ animationDelay: "0.4s" }}>
-            <div aria-hidden="true" className="absolute inset-[18%] rounded-full bg-orbit-500/25 blur-3xl" />
+            <div aria-hidden="true" className="absolute inset-[4%] blob text-orbit-500/30" />
             <OrbitMark spin className="relative size-full" />
           </div>
         </div>

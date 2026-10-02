@@ -5,7 +5,7 @@ export function PageHero({ eyebrow, title, intro }: { eyebrow: string; title: st
   const words = title.split(" ");
   return (
     <section className="relative px-6 pt-40 pb-16 md:pt-48 md:pb-20">
-      <div aria-hidden="true" className="absolute -top-60 left-1/2 size-[48rem] -translate-x-1/2 rounded-full bg-orbit-700/20 blur-[140px]" />
+      <div aria-hidden="true" className="absolute -top-60 left-1/2 size-[48rem] -translate-x-1/2 blob text-orbit-700/20" />
       <div className="relative mx-auto max-w-6xl">
         <div className="fade-up" style={{ animationDelay: "0.05s" }}>
           <Eyebrow>{eyebrow}</Eyebrow>

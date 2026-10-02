@@ -25,8 +25,9 @@ export function Hero() {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduce) return;
 
-    // The whole hero drifts up and fades as you scroll away from it.
+    // The whole hero drifts up and fades as you scroll away from it (phones skip this: it competes with touch scrolling).
     const ctx = gsap.context(() => {
+      if (!window.matchMedia("(min-width: 768px)").matches) return;
       gsap.to("[data-hero-content]", {
         yPercent: -18,
         autoAlpha: 0.15,
@@ -84,11 +85,11 @@ export function Hero() {
       <div
         ref={glowRef}
         aria-hidden="true"
-        className="pointer-events-none absolute top-0 left-0 size-[36rem] -translate-1/2 rounded-full bg-orbit-500/20 opacity-0 blur-[100px] transition-opacity duration-700"
+        className="pointer-events-none absolute top-0 left-0 size-[36rem] -translate-1/2 blob text-orbit-500/20 opacity-0 transition-opacity duration-700"
       />
       <div
         aria-hidden="true"
-        className="absolute top-1/2 right-[-10%] size-[50rem] -translate-y-1/2 rounded-full bg-orbit-700/20 blur-[140px]"
+        className="absolute top-1/2 right-[-10%] size-[50rem] -translate-y-1/2 blob text-orbit-700/20"
       />
 
       <div className="relative mx-auto grid w-full max-w-6xl items-center gap-12 lg:grid-cols-[1.15fr_1fr]">
@@ -127,10 +128,10 @@ export function Hero() {
           <div ref={orbitRef} className="relative aspect-square">
             <div
               aria-hidden="true"
-              className="fade-up absolute inset-[22%] rounded-full bg-orbit-400/25 blur-3xl"
+              className="fade-up absolute inset-[6%] blob text-orbit-400/30"
               style={{ animationDelay: "0.6s" }}
             />
-            <OrbitMark intro spin className="relative size-full drop-shadow-[0_0_30px_color-mix(in_oklab,var(--color-orbit-400)_35%,transparent)]" />
+            <OrbitMark intro spin className="relative size-full lg:drop-shadow-[0_0_30px_color-mix(in_oklab,var(--color-orbit-400)_35%,transparent)]" />
           </div>
         </div>
       </div>

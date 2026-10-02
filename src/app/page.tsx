@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { builds, packages, reasons, testimonial } from "@/content/site";
+import { builds, reasons, testimonial } from "@/content/site";
 import { Hero } from "@/components/hero";
 import { Showcase } from "@/components/showcase";
 import { Process } from "@/components/process";
@@ -7,7 +7,6 @@ import { Icon } from "@/components/icons";
 import { CtaBand, Page, SectionHeading } from "@/components/ui";
 import { Testimonial } from "@/components/testimonial";
 
-const from = packages[0].price;
 
 export default function HomePage() {
   return (
@@ -42,7 +41,7 @@ export default function HomePage() {
       </section>
 
       <section className="relative overflow-hidden border-y border-white/6 bg-ink-900/50 px-6 py-28 md:py-36">
-        <div aria-hidden="true" className="absolute -top-40 right-0 size-[36rem] rounded-full bg-orbit-700/15 blur-[120px]" />
+        <div aria-hidden="true" className="absolute -top-40 right-0 size-[36rem] blob text-orbit-700/15" />
         <div className="relative mx-auto grid max-w-6xl gap-16 lg:grid-cols-[1fr_1.3fr]">
           <div className="lg:sticky lg:top-32 lg:self-start">
             <SectionHeading
@@ -77,18 +76,20 @@ export default function HomePage() {
           className="tilt glow-border mx-auto flex max-w-6xl flex-col items-start justify-between gap-8 rounded-[2rem] border border-white/8 bg-gradient-to-br from-ink-800 to-ink-900 p-10 md:flex-row md:items-center md:p-14"
         >
           <div>
-            <p className="text-sm text-muted">Websites from</p>
-            <p className="mt-1 text-6xl font-semibold tracking-[-0.04em] md:text-7xl">
-              <span className="text-gradient">{from}</span>
+            <p className="text-sm text-muted">Pricing</p>
+            <p className="mt-1 text-5xl font-semibold tracking-[-0.04em] md:text-6xl">
+              <span className="text-gradient">Quoted to fit.</span>
             </p>
-            <p className="mt-3 max-w-md text-muted">Fixed quotes, no surprises. Three packages, plus a care plan to keep things running.</p>
+            <p className="mt-3 max-w-md text-muted">
+              No packages and no surprises. Tell me what you need and you&apos;ll get one fixed price, free.
+            </p>
           </div>
           <Link
             href="/services/"
             data-magnetic
             className="group inline-flex items-center gap-2 rounded-full border border-white/15 px-6 py-3.5 font-semibold transition-colors hover:bg-white/5"
           >
-            See packages
+            How quotes work
             <span aria-hidden="true" className="transition-transform duration-500 ease-out-expo group-hover:translate-x-1">
               →
             </span>

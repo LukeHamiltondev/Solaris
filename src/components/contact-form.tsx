@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { budgets, enquiryTypes, site } from "@/content/site";
+import { enquiryTypes, site } from "@/content/site";
 import { OrbitMark } from "./orbit-mark";
 
 const field =
@@ -58,14 +58,13 @@ function Choice({ name, options, value, onChange }: {
  */
 export function ContactForm() {
   const [need, setNeed] = useState<string>("");
-  const [budget, setBudget] = useState<string>("");
   const [sent, setSent] = useState(false);
 
-  // Arriving from a pricing card preselects that package.
+  // Arriving from a service card preselects that service.
   useEffect(() => {
-    const pkg = new URLSearchParams(window.location.search).get("package");
+    const preset = new URLSearchParams(window.location.search).get("need");
     // eslint-disable-next-line react-hooks/set-state-in-effect -- reading the URL once on arrival
-    if (pkg && (enquiryTypes as readonly string[]).includes(pkg)) setNeed(pkg);
+    if (preset && (enquiryTypes as readonly string[]).includes(preset)) setNeed(preset);
   }, []);
 
   const send = (e: React.FormEvent<HTMLFormElement>) => {
@@ -79,7 +78,6 @@ export function ContactForm() {
       get("business") && `Business: ${get("business")}`,
       get("website") && `Current website: ${get("website")}`,
       need && `Looking for: ${need}`,
-      budget && `Budget: ${budget}`,
     ].filter(Boolean);
     const subject = `Website enquiry from ${get("business") || get("name")}`;
     window.location.href = `mailto:${site.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`${lines.join("\n")}\n\n${get("message")}`)}`;
@@ -117,13 +115,9 @@ export function ContactForm() {
         <Field name="business" text="Business name" autoComplete="organization" />
       </div>
       <Field name="website" text="Current website (optional)" type="url" autoComplete="url" />
-      <fieldset className="pt-3">
+      <fieldset className="pt-3 pb-1">
         <legend className="mb-3 text-sm text-muted">What do you need?</legend>
         <Choice name="need" options={enquiryTypes} value={need} onChange={setNeed} />
-      </fieldset>
-      <fieldset className="pt-3 pb-1">
-        <legend className="mb-3 text-sm text-muted">Budget</legend>
-        <Choice name="budget" options={budgets} value={budget} onChange={setBudget} />
       </fieldset>
       <Field name="message" text="Tell me about your project" area required />
       <button
