@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { Icon } from "./icons";
 import { enquiryTypes, site } from "@/content/site";
 import { OrbitMark } from "./orbit-mark";
 
@@ -126,9 +127,7 @@ export function ContactForm() {
         className="sheen group inline-flex w-full items-center justify-center gap-2 rounded-full bg-orbit-200 px-6 py-4 font-semibold text-ink-950 transition-colors hover:bg-orbit-100 sm:w-auto"
       >
         Send enquiry
-        <span aria-hidden="true" className="transition-transform duration-500 ease-out-expo group-hover:translate-x-1">
-          →
-        </span>
+        <Icon name="arrow" className="size-4 transition-transform duration-500 ease-out-expo group-hover:translate-x-1" />
       </button>
     </form>
   );

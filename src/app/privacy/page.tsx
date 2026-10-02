@@ -47,7 +47,7 @@ const sections = [
 export default function PrivacyPage() {
   return (
     <Page>
-      <PageHero eyebrow="Privacy" title="Privacy and cookies" intro="What happens to your details, in plain English." />
+      <PageHero title="Privacy and cookies" intro="What happens to your details, in plain English." />
       <section className="px-6 pb-24">
         <div className="mx-auto max-w-2xl space-y-12">
           {sections.map((s) => (

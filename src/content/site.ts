@@ -19,51 +19,51 @@ export const nav = [
 export const hero = {
   eyebrow: "Web design & development",
   headline: "Websites that win you work.",
-  sub: "I design and build fast, custom websites for growing businesses, with the quote forms, catalogues and admin tools that turn visitors into customers.",
+  sub: "Fast, custom websites, plus the tools you run your business on.",
 } as const;
 
 export const builds = [
   {
     title: "Business websites",
-    body: "Custom-designed, mobile-first sites with a clear next step on every page: call, quote or enquire.",
-    icon: "site",
+    body: "Built to turn visitors into calls and quotes.",
+    need: "A new website",
   },
   {
     title: "Catalogues & quote systems",
-    body: "Hundreds of products, search, and a quote basket that matches how your customers actually buy.",
-    icon: "catalogue",
+    body: "Every product searchable, with a quote basket.",
+    need: "A catalogue or shop",
   },
   {
     title: "Admin tools & AI assistants",
-    body: "Update products, stock and prices from your phone, and let an assistant answer questions around the clock.",
-    icon: "tools",
+    body: "Run your stock and prices from your phone.",
+    need: "A custom tool",
   },
 ] as const;
 
 export const reasons = [
   {
     title: "Built to win work",
-    body: "Not just a nice-looking page. Every section is there to move a visitor one step closer to contacting you.",
+    body: "Every page leads to a call or a quote.",
   },
   {
     title: "Fast and found",
-    body: "Hand-written code, top Lighthouse scores and proper SEO. Moving from an old site? Your Google rankings come with you.",
+    body: "Quick to load, easy to find on Google.",
   },
   {
     title: "You can run it yourself",
-    body: "A simple admin panel for the things that change, built for your phone, so you're never waiting on a developer.",
+    body: "Change things from your phone, no developer needed.",
   },
   {
     title: "One person, start to finish",
-    body: "You talk to the person building your site. No account managers, no handoffs, no surprises.",
+    body: "You deal with me, start to finish.",
   },
 ] as const;
 
 export const steps = [
-  { title: "Call", body: "A short chat about your business, your customers and what the site needs to do." },
-  { title: "Plan & quote", body: "A clear plan and a fixed price before any work starts." },
-  { title: "Design & build", body: "You see progress as it happens and get two rounds of changes built in." },
-  { title: "Launch & support", body: "I put it live, set up analytics, and stay on hand afterwards." },
+  { title: "Call", body: "A short chat about your business." },
+  { title: "Plan & quote", body: "A fixed price before any work starts." },
+  { title: "Design & build", body: "You see it take shape as I build." },
+  { title: "Launch & support", body: "It goes live, and I stay on hand." },
 ] as const;
 
 // What's on offer. There are no fixed packages: every project gets its own quote.
@@ -107,24 +107,24 @@ export const services = [
 ] as const;
 
 export const quoteSteps = [
-  { title: "Tell me what you need", body: "Fill in the form or send an email. A few lines is plenty." },
-  { title: "Quick call", body: "We talk through your business, your customers and what the site has to do." },
-  { title: "Fixed quote", body: "You get one clear price and a timeline, free and with no obligation." },
+  { title: "Tell me what you need", body: "A few lines is plenty." },
+  { title: "Quick call", body: "We talk it through." },
+  { title: "Fixed quote", body: "One price and a timeline. Free." },
 ] as const;
 
 export const carePlan = {
   name: "Care plan",
-  body: "Hosting, updates, backups, small content edits and a monthly health check, so you never have to think about it. Add it to any project.",
+  body: "Hosting, updates, backups and small edits, handled. Add it to any project.",
 } as const;
 
 export const faqs = [
   {
     q: "How much does a website cost?",
-    a: "Every project is different, so I quote each one rather than squeezing it into a package. Tell me what you need and you'll get a fixed price, free and with no obligation.",
+    a: "It depends on the job, so every project gets a free, fixed quote.",
   },
   {
     q: "How long does it take?",
-    a: "Most sites take 2 to 6 weeks, depending on what they need to do. You'll get a timeline with your quote.",
+    a: "Usually 2 to 6 weeks. Your quote includes a timeline.",
   },
   {
     q: "Do I own the website?",
@@ -132,15 +132,15 @@ export const faqs = [
   },
   {
     q: "Can I edit it myself?",
-    a: "Yes. Anything that changes often, like products, prices or posts, gets a simple admin screen that works on your phone.",
+    a: "Yes, from a simple admin screen on your phone.",
   },
   {
     q: "I already have a website. Can you move it over?",
-    a: "Yes. I'll move your content across and keep your old page addresses working, so you don't lose your place on Google.",
+    a: "Yes, and your Google rankings come with you.",
   },
   {
     q: "How does payment work?",
-    a: "50% to start and 50% at launch. Your quote is fixed before any work begins, so the price won't creep.",
+    a: "50% to start, 50% at launch. The price is fixed.",
   },
 ] as const;
 
@@ -149,9 +149,8 @@ export const enquiryTypes = [...services.map((s) => s.need), "Not sure yet"] as 
 export const about = {
   heading: "Hi, I'm Luke.",
   body: [
-    "I build websites for businesses that want their site to do a job: bring in calls, quotes and customers.",
-    "I write every site by hand rather than starting from a template. That's what makes them fast, easy to find on Google, and shaped around how your customers actually buy.",
-    "When you work with Solaris Scaling, you work with me directly, from the first call to launch day and after.",
+    "I build websites that bring in calls, quotes and customers.",
+    "No templates, no agency. You deal with me from first call to launch.",
   ],
 } as const;
 
@@ -162,7 +161,7 @@ export const projects = [
   {
     slug: "industrial-supplier",
     client: "Irish industrial supplier",
-    summary: "An industrial supplier's 475-product catalogue, rebuilt to be fast, searchable and easy to quote from.",
+    summary: "475 products, rebuilt to be fast and easy to quote from.",
     tags: ["Next.js", "Product catalogue", "Quote basket", "Admin panel", "AI assistant"],
     image: "/work/supplier/home-desktop.webp",
   },
@@ -173,7 +172,7 @@ export const caseStudy = {
   location: "Ireland",
   industry: "Industrial supplies: valves, actuation, gaskets and clamps",
   intro:
-    "This engineering firm has supplied Ireland's power, food, pharmaceutical and manufacturing plants since 2012. Their old WooCommerce site was slow and hard to keep up to date, and it didn't match how their customers buy: engineers asking for prices on a list of parts.",
+    "Their old site was slow and hard to update. Their customers wanted prices on lists of parts, not a checkout.",
   stats: [
     { value: 475, suffix: "", label: "Products moved across" },
     { value: 153, suffix: "", label: "Categories, all kept" },
@@ -183,31 +182,31 @@ export const caseStudy = {
   features: [
     {
       title: "A catalogue that's fast to browse",
-      body: "All 475 products and 153 categories moved off WooCommerce onto a fully static site. Every old product address still works, so the Google rankings came with it.",
+      body: "Every product moved across, with no Google rankings lost.",
       image: "/work/supplier/shop-desktop.webp",
       kind: "desktop",
     },
     {
       title: "Product pages built for engineers",
-      body: "Clear specs, photos and a breadcrumb trail through the category tree, with search across the whole range.",
+      body: "Specs, photos and search across the whole range.",
       image: "/work/supplier/product-desktop.webp",
       kind: "desktop",
     },
     {
       title: "A quote basket instead of a checkout",
-      body: "Industrial buyers want prices on a list of parts, not a card payment. Customers add products, note sizes and ratings, and send one request.",
+      body: "Add parts, send one request, get a price.",
       image: "/work/supplier/quote-desktop.webp",
       kind: "desktop",
     },
     {
       title: "An AI product assistant",
-      body: "A chat assistant that knows the whole catalogue. Ask for “stainless ball valves” and it suggests matching products you can add straight to a quote.",
+      body: "Ask for a part, get matching products.",
       image: "/work/supplier/chat-mobile.webp",
       kind: "phone",
     },
     {
       title: "An admin panel that fits in a pocket",
-      body: "The team updates stock, products, photos and categories from their phone, or in bulk from a spreadsheet. Changes go live on their own within minutes.",
+      body: "Stock and products, updated from a phone.",
       image: "/work/supplier/admin-mobile.webp",
       kind: "phone",
     },

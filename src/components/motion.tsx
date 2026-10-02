@@ -32,7 +32,6 @@ const finePointer = () => window.matchMedia("(hover: hover) and (pointer: fine)"
  * every animation that pages opt into with data attributes:
  *
  * - data-reveal          fade and rise in when scrolled into view (siblings stagger)
- * - .heading-sweep       a sheen sweeps across the heading once it's in view
  * - data-count="475"     count up from zero when in view
  * - data-magnetic        drift toward the cursor (buttons)
  * - data-tilt            3D tilt and a cursor-following glow (cards)
@@ -85,11 +84,6 @@ export function Motion() {
             el.textContent = Math.round(obj.v).toLocaleString("en-IE");
           },
         });
-      });
-
-      gsap.utils.toArray<HTMLElement>(".heading-sweep").forEach((el) => {
-        if (reduce) return el.classList.add("is-in");
-        ScrollTrigger.create({ trigger: el, start: "top 88%", once: true, onEnter: () => el.classList.add("is-in") });
       });
 
       if (reduce) return;

@@ -45,31 +45,85 @@ export function ButtonLink({
   );
 }
 
-export function Eyebrow({ children, className = "" }: { children: React.ReactNode; className?: string }) {
-  return (
-    <p className={`inline-flex items-center gap-2 text-xs font-medium tracking-[0.2em] text-orbit-200 uppercase ${className}`}>
-      <span className="size-1.5 rounded-full bg-orbit-200 shadow-[0_0_12px_2px] shadow-orbit-400" aria-hidden="true" />
-      {children}
-    </p>
-  );
-}
-
 export function SectionHeading({
-  eyebrow,
   title,
   intro,
   center = false,
 }: {
-  eyebrow: string;
   title: React.ReactNode;
   intro?: React.ReactNode;
   center?: boolean;
 }) {
   return (
     <div className={center ? "mx-auto max-w-2xl text-center" : "max-w-2xl"}>
-      <Eyebrow>{eyebrow}</Eyebrow>
-      <h2 className="heading-sweep mt-5 text-4xl font-semibold tracking-[-0.03em] text-balance md:text-5xl">{title}</h2>
+      <h2 className="text-4xl font-semibold tracking-[-0.03em] text-balance md:text-5xl">{title}</h2>
       {intro && <p className="mt-5 text-lg leading-relaxed text-pretty text-muted">{intro}</p>}
+    </div>
+  );
+}
+
+/** A quiet text action with the drawn arrow: mist, semibold, violet underline. */
+export function TextLink({ href, children, className = "" }: { href: string; children: React.ReactNode; className?: string }) {
+  return (
+    <Link
+      href={href}
+      className={`group inline-flex items-center gap-2 text-[15px] font-semibold text-mist underline decoration-orbit-400/60 underline-offset-[6px] transition-colors hover:decoration-orbit-100 ${className}`}
+    >
+      {children}
+      <Icon name="arrow" className="size-4 transition-transform duration-500 ease-out-expo group-hover:translate-x-1" />
+    </Link>
+  );
+}
+
+/** Short titled points on hairlines, two across from sm. Used for "why" style lists instead of boxed cards. */
+export function PointList({ items, className = "" }: { items: readonly { title: string; body: string }[]; className?: string }) {
+  return (
+    <ul className={`grid gap-x-10 gap-y-10 sm:grid-cols-2 ${className}`}>
+      {items.map((item) => (
+        <li key={item.title} data-reveal className="border-t border-white/12 pt-6">
+          <h3 className="text-xl font-semibold tracking-tight">{item.title}</h3>
+          <p className="mt-2.5 leading-relaxed text-pretty text-muted">{item.body}</p>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+// The logo's ring geometry, reused at page scale. Same dashes and rotations as the mark and the home hero.
+const ringStyles = [
+  { dash: "62 38", rotate: 200, stroke: "var(--ring-1)", width: 1.5, opacity: 0.9 },
+  { dash: "70 30", rotate: 250, stroke: "var(--ring-2)", width: 1, opacity: 0.7 },
+  { dash: "78 22", rotate: 300, stroke: "var(--ring-3)", width: 1, opacity: 0.5 },
+] as const;
+
+/**
+ * Still orbit rings centred on their box, drawn as hairlines at any size. `sizes` gives each ring's
+ * diameter, inner first. Decorative: place them so they pass around body text and controls, never through.
+ */
+export function Rings({ sizes, className = "" }: { sizes: readonly string[]; className?: string }) {
+  return (
+    <div aria-hidden="true" className={`pointer-events-none absolute size-0 ${className}`}>
+      {sizes.map((size, i) => {
+        const ring = ringStyles[i % ringStyles.length];
+        return (
+          <svg key={i} viewBox="0 0 100 100" className="absolute -translate-1/2" style={{ width: size, height: size }}>
+            <circle
+              cx="50"
+              cy="50"
+              r="49.5"
+              fill="none"
+              stroke={ring.stroke}
+              strokeOpacity={ring.opacity}
+              strokeWidth={ring.width}
+              vectorEffect="non-scaling-stroke"
+              strokeLinecap="round"
+              pathLength={100}
+              strokeDasharray={ring.dash}
+              transform={`rotate(${ring.rotate} 50 50)`}
+            />
+          </svg>
+        );
+      })}
     </div>
   );
 }
@@ -130,17 +184,15 @@ export function PhoneFrame({ children, className = "" }: { children: React.React
 
 export function CtaBand() {
   return (
-    <section className="relative overflow-hidden px-6 py-28 md:py-36">
-      <div
-        aria-hidden="true"
-        className="absolute top-1/2 left-1/2 size-[44rem] -translate-1/2 blob text-orbit-500/15"
-      />
+    <section className="relative overflow-hidden px-6 py-28 md:py-40">
+      {/* Two of the logo's orbits circle the ask; sized so their strokes pass beside the copy, not through it. */}
+      <Rings sizes={["max(58rem, 70vw)", "max(78rem, 94vw)"]} className="top-1/2 left-1/2 hidden md:block" />
       <div className="relative mx-auto max-w-3xl text-center" data-reveal>
         <h2 className="text-4xl font-semibold tracking-[-0.03em] text-balance md:text-6xl">
-          Got a project in mind? <span className="text-gradient">Let&apos;s talk.</span>
+          Got a project in mind? <span className="text-orbit-200">Let&apos;s talk.</span>
         </h2>
         <p className="mx-auto mt-6 max-w-xl text-lg text-muted">
-          Tell me a little about your business and I&apos;ll come back with ideas and a clear, fixed quote.
+          Tell me what you need. You&apos;ll get a fixed quote, free.
         </p>
         <div className="mt-10 flex flex-wrap justify-center gap-3">
           <ButtonLink href="/contact/">Get a free quote</ButtonLink>

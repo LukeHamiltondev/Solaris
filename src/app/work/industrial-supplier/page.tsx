@@ -3,7 +3,7 @@ import Image from "next/image";
 import { testimonial, caseStudy } from "@/content/site";
 import { PageHero } from "@/components/page-hero";
 import { Testimonial } from "@/components/testimonial";
-import { BrowserFrame, CtaBand, Eyebrow, Page, PhoneFrame, SectionHeading } from "@/components/ui";
+import { BrowserFrame, CtaBand, Page, PhoneFrame, SectionHeading } from "@/components/ui";
 
 export const metadata: Metadata = {
   title: "Industrial supplier case study",
@@ -24,7 +24,7 @@ const layout = (kind: string, flipped: boolean) =>
 export default function CaseStudy() {
   return (
     <Page>
-      <PageHero eyebrow="Case study" title="A 475-product catalogue, rebuilt" intro={caseStudy.intro} />
+      <PageHero title="A 475-product catalogue, rebuilt" intro={caseStudy.intro} />
 
       <section className="px-6">
         <div className="mx-auto max-w-6xl">
@@ -64,27 +64,26 @@ export default function CaseStudy() {
       </section>
 
       <section className="px-6 pt-32 pb-8">
-        <div className="mx-auto grid max-w-6xl grid-cols-2 gap-4 md:grid-cols-4">
+        <dl className="mx-auto grid max-w-6xl grid-cols-2 gap-x-8 md:grid-cols-4">
           {caseStudy.stats.map((s) => (
-            <div key={s.label} data-reveal className="rounded-3xl border border-white/8 bg-ink-900/70 p-6 md:p-8">
-              <p className="text-5xl font-semibold tracking-[-0.04em] text-orbit-100 tabular-nums md:text-6xl">
+            <div key={s.label} data-reveal className="flex flex-col gap-2 border-t border-white/12 pt-5 pb-8">
+              <dt className="text-sm text-muted">{s.label}</dt>
+              <dd className="order-first text-5xl font-semibold tracking-[-0.04em] tabular-nums md:text-6xl">
                 <span data-count={s.value}>{s.value}</span>
-              </p>
-              <p className="mt-2 text-sm text-muted">{s.label}</p>
+              </dd>
             </div>
           ))}
-        </div>
+        </dl>
       </section>
 
       <section className="px-6 py-24 md:py-32">
         <div className="mx-auto max-w-6xl">
-          <SectionHeading eyebrow="What I built" title="Built around how industrial buyers actually buy." />
+          <SectionHeading title="Built around how industrial buyers actually buy." />
           <div className="mt-20 space-y-28 md:space-y-40">
             {caseStudy.features.map((f, i) => (
               <article key={f.title} className={`grid items-center gap-10 md:gap-16 ${layout(f.kind, i % 2 === 1)}`}>
                 <div data-reveal className={i % 2 ? (f.kind === "phone" ? "md:order-2" : "lg:order-2") : ""}>
-                  <p className="text-sm font-medium text-orbit-200 tabular-nums">0{i + 1}</p>
-                  <h3 className="mt-3 text-3xl font-semibold tracking-tight text-balance">{f.title}</h3>
+                  <h3 className="text-3xl font-semibold tracking-tight text-balance">{f.title}</h3>
                   <p className="mt-4 text-lg leading-relaxed text-muted">{f.body}</p>
                 </div>
                 <div data-reveal className={i % 2 ? (f.kind === "phone" ? "md:order-1" : "lg:order-1") : ""}>
@@ -107,12 +106,8 @@ export default function CaseStudy() {
       <section className="border-y border-white/6 bg-ink-900/50 px-6 py-24">
         <div className="mx-auto grid max-w-6xl gap-12 md:grid-cols-2">
           <div data-reveal>
-            <Eyebrow>Under the hood</Eyebrow>
-            <h2 className="mt-5 text-3xl font-semibold tracking-tight">Quality checks on every change</h2>
-            <p className="mt-4 text-lg leading-relaxed text-muted">
-              The site is fully static, so pages load instantly. Every change runs automated Lighthouse quality gates and
-              visual tests before it goes live, so nothing breaks quietly.
-            </p>
+            <h2 className="text-3xl font-semibold tracking-tight">Tested on every change</h2>
+            <p className="mt-4 text-lg leading-relaxed text-muted">Nothing goes live without passing speed and visual checks.</p>
           </div>
           <ul data-reveal className="flex flex-wrap content-start gap-2.5">
             {caseStudy.stack.map((t) => (

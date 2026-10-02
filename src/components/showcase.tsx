@@ -1,12 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { caseStudy } from "@/content/site";
-import { BrowserFrame, Eyebrow, PhoneFrame } from "./ui";
+import { BrowserFrame, PhoneFrame, TextLink } from "./ui";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -67,39 +66,30 @@ export function Showcase() {
 
   return (
     <section ref={sectionRef} id="work" className="relative overflow-hidden px-6 py-24 lg:flex lg:h-svh lg:items-center lg:py-0">
-      <div aria-hidden="true" className="absolute top-1/3 left-1/4 size-[40rem] blob text-orbit-700/15" />
       <div className="relative mx-auto grid w-full max-w-6xl items-center gap-14 lg:grid-cols-[0.8fr_1.2fr] lg:pt-16">
         <div>
-          <Eyebrow>Featured work</Eyebrow>
-          <h2 className="heading-sweep mt-5 text-4xl font-semibold tracking-[-0.03em] md:text-5xl">A 475-product catalogue, rebuilt</h2>
-          <p className="mt-5 text-lg leading-relaxed text-muted">
-            An industrial supplier&apos;s whole catalogue, rebuilt to be fast, searchable and easy to quote from, with an
-            admin panel the team runs from their phones.
-          </p>
-          <div className="mt-8 grid grid-cols-2 gap-3">
+          <h2 className="text-4xl font-semibold tracking-[-0.03em] text-balance md:text-5xl">
+            A 475-product catalogue, <span className="text-orbit-200">rebuilt.</span>
+          </h2>
+          <p className="mt-5 text-lg leading-relaxed text-muted">An industrial supplier&apos;s site, now fast and easy to quote from.</p>
+          {/* Results as a ruled ledger, not boxed tiles. */}
+          <dl className="mt-9 grid grid-cols-2 gap-x-8 border-t border-white/12">
             {caseStudy.stats.slice(0, 3).map((s) => (
-              <div key={s.label} data-chip className="rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-3.5">
-                <p className="text-3xl font-semibold tracking-tight text-orbit-100 tabular-nums">
+              <div key={s.label} data-chip className="flex flex-col gap-1 border-b border-white/12 py-4">
+                <dt className="text-sm text-muted">{s.label}</dt>
+                <dd className="order-first text-3xl font-semibold tracking-tight text-mist tabular-nums">
                   <span data-tally={s.value}>{s.value}</span>
-                </p>
-                <p className="mt-1 text-xs text-muted">{s.label}</p>
+                </dd>
               </div>
             ))}
-            <div data-chip className="rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-3.5">
-              <p className="text-3xl font-semibold tracking-tight text-orbit-100">AI</p>
-              <p className="mt-1 text-xs text-muted">Product assistant</p>
+            <div data-chip className="flex flex-col gap-1 border-b border-white/12 py-4">
+              <dt className="text-sm text-muted">Product assistant</dt>
+              <dd className="order-first text-3xl font-semibold tracking-tight text-mist">AI</dd>
             </div>
-          </div>
-          <Link
-            href="/work/industrial-supplier/"
-            data-magnetic
-            className="group mt-9 inline-flex items-center gap-2 text-[15px] font-semibold text-orbit-100"
-          >
+          </dl>
+          <TextLink href="/work/industrial-supplier/" className="mt-9">
             Read the case study
-            <span aria-hidden="true" className="transition-transform duration-500 ease-out-expo group-hover:translate-x-1">
-              →
-            </span>
-          </Link>
+          </TextLink>
         </div>
 
         <div className="relative pb-10 lg:pb-0">

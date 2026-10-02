@@ -121,7 +121,7 @@ Solaris Scaling lives on a near-black ink ground, lit only by the logo's own vio
 
 The surface is calm and dark so violet can do all the emphasis work. Type is Inter (the logo's typeface), set large, tight and semibold for headlines, and plain for body copy in a soft grey. Depth comes from tonal ink steps, hairline white borders, and long, soft drop shadows under device frames, never from coloured glows in the hero's vocabulary. Motion is slow and continuous on desktop (orbits turning over 70 to 160 seconds), still on phones, and absent under reduced motion; the site must stay smooth on a phone.
 
-The home hero (`src/components/hero.tsx`) is the newest and most deliberate expression of the world. Several older sections below it still carry an earlier vocabulary; see "Known drift" under Do's and Don'ts.
+The home hero (`src/components/hero.tsx`) set the world; every other page now follows it. Inner pages open on the same orbits rising from the right edge, sections speak in plain headings and short lines, and the work itself (device frames, the live admin demo) carries the persuasion. Copy is deliberately brief: Luke asked for a site that demonstrates rather than explains (2026-10-02).
 
 **Key Characteristics:**
 - Near-black ink ground (ink-950) with tonal ink steps for surfaces.
@@ -142,7 +142,7 @@ A single violet family taken from the logo, set against near-black ink and cool 
 ### Secondary
 - **Dusk Violet** (orbit-400): the middle ring (`--ring-2`) and quiet underline decoration on text links (at 60% opacity).
 - **Deep Orbit Violet** (orbit-500): the outer ring (`--ring-3`) and text selection background.
-- **Night Violet** (orbit-700): the darkest violet; currently used only by the older blob glows (drift).
+- **Night Violet** (orbit-700): the darkest violet; held in reserve, currently unused.
 
 ### Neutral
 - **Ink Black** (ink-950): page ground, the ink-plate pools, and text on violet buttons.
@@ -223,7 +223,7 @@ Confident pills with a trailing arrow that nudges forward on hover.
 - **State:** hover turns the border orbit-200 and adds an orbit-200/10 wash. Introduced by a plain mist question in sentence case ("What do you need?"), not a kicker.
 
 ### Cards / Containers
-- **Corner Style:** 1.5rem (home builds), 1.75rem (services), 2rem (work list, closing band).
+- **Corner Style:** 1.75rem (services), 2rem (work list, pricing band).
 - **Background:** ink-900 at 70%, or ink-950 at 60% on a tinted section.
 - **Shadow Strategy:** none at rest (see Elevation).
 - **Border:** white/8 hairline.
@@ -232,6 +232,14 @@ Confident pills with a trailing arrow that nudges forward on hover.
 
 ### Navigation
 A floating pill header, transparent at the top of the page, contracting into a glass pill (max 56rem) on scroll. Logo mark plus wordmark (17px, regular) on the left; nav links 14px in muted, mist when hovered or current, with a white/8 pill that slides between them on the expo ease; a small primary "Get a quote" pill on the right. On phones a 44px round menu button opens a full-screen ink-950 (97%) menu of 2.25rem semibold links that rise in on a stagger.
+
+### Page orbits
+`Rings` in `ui.tsx` draws the logo's rings, still, at any size. Inner page heroes (`PageHero`) centre three rings (34, 54, 74rem) on the right edge from md up, faded out toward the content with a mask; the closing band (`CtaBand`) circles its ask with two rings sized so the strokes pass beside the copy. Phones get none.
+
+### Ruled lists and text links
+- **PointList:** titled short points on white/12 hairlines, two across from sm (four on About). Replaces boxed reason cards.
+- **Build rows:** title, one line, and a "Quote for this" link that opens the form preset, on full-width hairlines.
+- **TextLink:** mist 15px semibold with an orbit-400/60 underline and the drawn arrow; the site's secondary action everywhere.
 
 ### Device frames
 - **Phone:** ink-800 bezel (ink-900 in PhoneFrame), white/15 hairline, 8px inset, black dynamic-island pill. The hero's phone holds a live, code-rendered client admin.
@@ -260,10 +268,15 @@ A small 24px line set drawn in code (`src/components/icons.tsx`): 1.6 stroke, ro
 - **Don't** use `filter: blur()` or live `backdrop-filter` on surfaces that scroll on phones.
 - **Don't** set display type at default tracking; it goes to -0.04em.
 
-### Known drift (recorded, not canonized)
-Sections below the hero, built before it, still use devices the hero moved away from. They are listed here so new surfaces do not copy them; they are not part of the system.
-- **Eyebrow kickers with glow dots** (`Eyebrow` in `ui.tsx`, via `SectionHeading`, `PageHero`, `Showcase` and the client case study): small uppercase violet labels over headings, each with a glowing dot.
-- **Gradient text** (`.text-gradient`): the CTA band's "Let's talk.", the home closing band, the Work page's "next.", the mobile menu's "Get a quote"; and the related `.heading-sweep` clipped-gradient sheen on section headings.
-- **Colour blobs** (`.blob` at orbit-500/700): behind page heroes, the showcase, the home "Why" section, the CTA band and the About portrait.
-- **Icon tiles** (home "What I build" cards): icons boxed in violet-tinted rounded squares.
-- **Glow line** (process timeline): a gradient line with an orbit-400 glow shadow.
+### Retired patterns
+These were removed from the site on 2026-10-02 when the hero's world was applied everywhere. Do not bring them back.
+- Eyebrow kickers over headings (with or without glow dots).
+- Gradient text and the `.heading-sweep` clipped sheen.
+- Colour blobs (radial violet glows) behind sections.
+- Icon tiles and boxed same-size cards as section structure; use ruled lists (`PointList`, the home "What I build" rows) instead.
+- Boxed stat tiles; results sit in a ruled ledger (`dl` on hairlines).
+- Glowing timeline lines; the process line is a solid orbit-200 hairline.
+
+### Copy
+- **Do** keep every block to a heading and one short line. Show the work instead of describing it.
+- **Don't** write paragraphs where a line will do; the site is not a brochure.

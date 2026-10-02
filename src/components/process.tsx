@@ -7,7 +7,7 @@ import { steps } from "@/content/site";
 
 gsap.registerPlugin(ScrollTrigger);
 
-/** The four steps, joined by a glowing line that draws itself as you scroll and lights each step in turn. */
+/** The four steps, joined by a violet hairline that draws itself as you scroll and rings each step in turn. */
 export function Process() {
   const ref = useRef<HTMLOListElement>(null);
 
@@ -49,23 +49,23 @@ export function Process() {
 
   return (
     <ol ref={ref} className="relative mt-16 grid gap-10 pl-10 md:grid-cols-4 md:gap-6 md:pt-12 md:pl-0">
-      {/* Track and glowing line: vertical on phones, horizontal from tablet up. */}
+      {/* Track and drawn line: vertical on phones, horizontal from tablet up. */}
       <span aria-hidden="true" className="absolute top-2 bottom-2 left-[11px] w-px bg-white/10 md:top-[11px] md:right-[calc(25%-1.125rem-11px)] md:bottom-auto md:left-[11px] md:h-px md:w-auto" />
       <span
         data-line
         aria-hidden="true"
-        className="absolute top-2 bottom-2 left-[11px] w-px origin-top bg-gradient-to-b from-orbit-100 via-orbit-200 to-orbit-500 shadow-[0_0_12px_1px] shadow-orbit-400 md:top-[11px] md:right-[calc(25%-1.125rem-11px)] md:bottom-auto md:left-[11px] md:h-px md:w-auto md:origin-left md:bg-gradient-to-r"
+        className="absolute top-2 bottom-2 left-[11px] w-px origin-top bg-orbit-200 md:top-[11px] md:right-[calc(25%-1.125rem-11px)] md:bottom-auto md:left-[11px] md:h-px md:w-auto md:origin-left"
       />
       {steps.map((step, i) => (
         <li key={step.title} className="relative" data-reveal>
           <span
             data-dot
             aria-hidden="true"
-            className="group/dot absolute top-0.5 -left-10 grid size-[22px] place-items-center rounded-full border border-white/15 bg-ink-950 transition-all duration-700 ease-out-expo md:-top-12 md:left-0 [&.is-lit]:border-orbit-200 [&.is-lit]:shadow-[0_0_20px_2px] [&.is-lit]:shadow-orbit-400/70"
+            className="group/dot absolute top-0.5 -left-10 grid size-[22px] place-items-center rounded-full border border-white/15 bg-ink-950 transition-all duration-700 ease-out-expo md:-top-12 md:left-0 [&.is-lit]:border-orbit-200"
           >
             <span className="size-2 rounded-full bg-white/20 transition-colors duration-700 group-[.is-lit]/dot:bg-orbit-100" />
           </span>
-          <p className="text-xs font-medium tracking-[0.2em] text-subtle tabular-nums">0{i + 1}</p>
+          <p className="text-sm font-medium text-subtle tabular-nums">Step {i + 1}</p>
           <h3 className="mt-2 text-xl font-semibold tracking-tight">{step.title}</h3>
           <p className="mt-2 text-[15px] leading-relaxed text-muted">{step.body}</p>
         </li>

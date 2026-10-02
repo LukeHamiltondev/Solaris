@@ -132,7 +132,7 @@ export function Header() {
               tabIndex={open ? undefined : -1}
               className={`text-4xl font-semibold tracking-tight transition-all duration-700 ease-out-expo ${
                 open ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
-              } ${item.href === "/contact/" ? "text-gradient" : "text-mist"}`}
+              } ${item.href === "/contact/" ? "text-orbit-200" : "text-mist"}`}
               style={{ transitionDelay: open ? `${80 + i * 60}ms` : "0ms" }}
             >
               {item.label}
