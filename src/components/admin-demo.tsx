@@ -4,12 +4,12 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { Icon } from "./icons";
 
-// A working copy of the stock screen from Wixted Engineering's admin panel, as it looks on a phone.
+// A working copy of the stock screen from a client's admin panel (an industrial supplier), as it looks on a phone.
 // The products are real; the stock numbers are made up, and nothing here touches their live site.
+// Two products, so the whole screen fits inside the phone frame with nothing cut off.
 const products = [
   { id: "clamps", name: "‘T’ Bolt Clamps", category: "Bolt clamps", img: "t-bolt-clamps", stock: 24 },
   { id: "thermo", name: "33D Thermometer", category: "Temperature gauges", img: "thermometer", stock: 6 },
-  { id: "actuator", name: "HQ Electric Actuator", category: "Electric actuators", img: "electric-actuator", stock: 3 },
 ] as const;
 
 type Id = (typeof products)[number]["id"];
@@ -102,25 +102,25 @@ export function AdminDemo({ onLive }: { onLive?: (live: boolean) => void }) {
   return (
     <div ref={rootRef} onPointerDown={takeOver} onKeyDown={takeOver} className="admin flex h-full flex-col bg-[#f3f5f9] text-[#0f1b33]">
       <div className="flex items-center gap-2 border-b border-[#dfe4ee] bg-white px-4 pt-9 pb-3">
-        <Image src="/work/wixted/admin/wesl-mark.webp" alt="" width={28} height={28} className="rounded-md" />
+        <Image src="/work/supplier/admin/wesl-mark.webp" alt="" width={28} height={28} className="rounded-md" />
         <span className="text-[15px] font-bold">Admin</span>
         <span className="ml-auto inline-flex items-center gap-1 text-[12px] text-[#123f86]">
           View website <Icon name="external" className="size-3" />
         </span>
       </div>
 
-      <div className="relative flex-1 overflow-hidden px-3.5 pt-4">
+      <div className="flex-1 px-3.5 pt-4">
         <p className="text-[22px] leading-none font-bold tracking-tight">Products</p>
         <p className="mt-1.5 text-[12px] leading-snug text-[#4a5875]">Change stock, then press Save.</p>
 
-        <ul className="mt-3 space-y-2">
+        <ul className="mt-4 space-y-2.5">
           {products.map((p) => {
             const changed = stock[p.id] !== saved[p.id];
             return (
-              <li key={p.id} className="rounded-xl border border-[#dfe4ee] bg-white p-2.5">
+              <li key={p.id} className="rounded-xl border border-[#dfe4ee] bg-white p-3">
                 <div className="flex items-start gap-2.5">
                   <Image
-                    src={`/work/wixted/admin/${p.img}.webp`}
+                    src={`/work/supplier/admin/${p.img}.webp`}
                     alt=""
                     width={40}
                     height={40}
@@ -131,7 +131,7 @@ export function AdminDemo({ onLive }: { onLive?: (live: boolean) => void }) {
                     <p className="mt-0.5 text-[11.5px] text-[#5b6884]">{p.category}</p>
                   </div>
                 </div>
-                <div className="mt-1.5 flex items-center justify-between">
+                <div className="mt-2.5 flex items-center justify-between">
                   <span className="text-[11.5px] text-[#5b6884]">In stock</span>
                   <div className="flex items-center gap-1">
                     <Stepper label={`One fewer ${p.name}`} pressed={pressed === `${p.id}-`} onClick={() => change(p.id, -1)}>
@@ -154,11 +154,9 @@ export function AdminDemo({ onLive }: { onLive?: (live: boolean) => void }) {
             );
           })}
         </ul>
-        {/* The list carries on below: fade it out rather than cut a card in half. */}
-        <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[#f3f5f9] from-35% to-transparent" />
       </div>
 
-      <div className="relative border-t border-[#dfe4ee] bg-white p-3">
+      <div className="relative border-t border-[#dfe4ee] bg-white px-4 pt-3 pb-2">
         <div aria-live="polite" className="absolute inset-x-0 -top-4 flex justify-center text-[11.5px] font-medium">
           {status === "live" && !dirty && (
             <span className="rounded-full bg-[#e3f4ea] px-3 py-1.5 whitespace-nowrap text-[#17804a] shadow-[0_6px_14px_-8px_rgb(0_0_0/0.4)]">
@@ -176,6 +174,8 @@ export function AdminDemo({ onLive }: { onLive?: (live: boolean) => void }) {
         >
           {status === "saving" ? "Saving…" : "Save changes"}
         </button>
+        {/* Home indicator, and room for the frame's rounded corners. */}
+        <span aria-hidden="true" className="mx-auto mt-3 block h-1 w-24 rounded-full bg-[#0f1b33]" />
       </div>
     </div>
   );

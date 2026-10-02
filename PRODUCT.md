@@ -18,7 +18,7 @@ Solaris Scaling is Luke Hamilton's one-person web development business. The site
 
 ## Positioning
 
-Custom-built websites that bring in enquiries, plus the working tools the business runs on (product catalogues, quote baskets, phone-friendly admin panels, AI product assistants), built and supported by the one developer the client talks to. The proof is shipped work, not adjectives: the Wixted Engineering rebuild.
+Custom-built websites that bring in enquiries, plus the working tools the business runs on (product catalogues, quote baskets, phone-friendly admin panels, AI product assistants), built and supported by the one developer the client talks to. The proof is shipped work, not adjectives: the industrial supplier rebuild.
 
 ## Operating Context
 
@@ -43,8 +43,8 @@ Custom-built websites that bring in enquiries, plus the working tools the busine
 
 ## Evidence on Hand
 
-- Wixted Engineering case study (real, live at wixtedengineering.ie): 475 products in 153 categories migrated, zero lost URLs, Lighthouse 100, quote basket, phone admin, AI assistant. Screenshots in `public/work/wixted/`.
-- No testimonials yet (one from Wixted is requested). No photo of Luke yet. No other client projects. Do not invent clients, numbers, reviews or prices.
+- Industrial supplier case study (real client, live site; the client asked not to be named, so the site never names them or links to them): 475 products in 153 categories migrated, zero lost URLs, Lighthouse 100, quote basket, phone admin, AI assistant. Screenshots in `public/work/supplier/`.
+- No testimonials yet (one from the client is requested). No photo of Luke yet. No other client projects. Do not invent clients, numbers, reviews or prices.
 
 ## Product Principles
 

@@ -5,13 +5,13 @@ import Link from "next/link";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { wixted } from "@/content/site";
+import { caseStudy } from "@/content/site";
 import { BrowserFrame, Eyebrow, PhoneFrame } from "./ui";
 
 gsap.registerPlugin(ScrollTrigger);
 
 /**
- * Featured work on the home page. On large screens the section pins while you scroll: the Wixted
+ * Featured work on the home page. On large screens the section pins while you scroll: the client’s
  * homepage scrolls inside the browser frame, the phone slides in beside it, and the results land.
  */
 export function Showcase() {
@@ -71,13 +71,13 @@ export function Showcase() {
       <div className="relative mx-auto grid w-full max-w-6xl items-center gap-14 lg:grid-cols-[0.8fr_1.2fr] lg:pt-16">
         <div>
           <Eyebrow>Featured work</Eyebrow>
-          <h2 className="heading-sweep mt-5 text-4xl font-semibold tracking-[-0.03em] md:text-5xl">Wixted Engineering</h2>
+          <h2 className="heading-sweep mt-5 text-4xl font-semibold tracking-[-0.03em] md:text-5xl">A 475-product catalogue, rebuilt</h2>
           <p className="mt-5 text-lg leading-relaxed text-muted">
             An industrial supplier&apos;s whole catalogue, rebuilt to be fast, searchable and easy to quote from, with an
             admin panel the team runs from their phones.
           </p>
           <div className="mt-8 grid grid-cols-2 gap-3">
-            {wixted.stats.slice(0, 3).map((s) => (
+            {caseStudy.stats.slice(0, 3).map((s) => (
               <div key={s.label} data-chip className="rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-3.5">
                 <p className="text-3xl font-semibold tracking-tight text-orbit-100 tabular-nums">
                   <span data-tally={s.value}>{s.value}</span>
@@ -91,7 +91,7 @@ export function Showcase() {
             </div>
           </div>
           <Link
-            href="/work/wixted-engineering/"
+            href="/work/industrial-supplier/"
             data-magnetic
             className="group mt-9 inline-flex items-center gap-2 text-[15px] font-semibold text-orbit-100"
           >
@@ -104,12 +104,12 @@ export function Showcase() {
 
         <div className="relative pb-10 lg:pb-0">
           <div data-browser>
-            <BrowserFrame url="wixtedengineering.ie">
+            <BrowserFrame>
               <div data-screen className="relative aspect-[16/10] overflow-hidden bg-white">
                 <Image
                   data-shot
-                  src="/work/wixted/home-desktop-full.webp"
-                  alt="The Wixted Engineering homepage"
+                  src="/work/supplier/home-desktop-full.webp"
+                  alt="The supplier’s new homepage"
                   width={1440}
                   height={3664}
                   sizes="(min-width: 1024px) 700px, 100vw"
@@ -121,8 +121,8 @@ export function Showcase() {
           <div data-phone className="absolute -right-2 -bottom-4 w-[30%] max-w-48 sm:-right-6 lg:-bottom-10">
             <PhoneFrame>
               <Image
-                src="/work/wixted/home-mobile.webp"
-                alt="The Wixted Engineering homepage on a phone"
+                src="/work/supplier/home-mobile.webp"
+                alt="The supplier’s new homepage on a phone"
                 width={780}
                 height={1688}
                 sizes="200px"

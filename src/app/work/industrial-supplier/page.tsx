@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { testimonial, wixted } from "@/content/site";
+import { testimonial, caseStudy } from "@/content/site";
 import { PageHero } from "@/components/page-hero";
 import { Testimonial } from "@/components/testimonial";
 import { BrowserFrame, CtaBand, Eyebrow, Page, PhoneFrame, SectionHeading } from "@/components/ui";
 
 export const metadata: Metadata = {
-  title: "Wixted Engineering case study",
+  title: "Industrial supplier case study",
   description:
-    "How a Limerick industrial supplier's 475-product catalogue was rebuilt into a fast site with a quote basket, AI assistant and phone-friendly admin panel.",
+    "How an Irish industrial supplier's 475-product catalogue was rebuilt into a fast site with a quote basket, AI assistant and phone-friendly admin panel.",
 };
 
 // Text beside a wide screenshot or a phone, swapping sides on every other feature.
@@ -21,41 +21,33 @@ const layout = (kind: string, flipped: boolean) =>
       ? "lg:grid-cols-[1.5fr_1fr]"
       : "lg:grid-cols-[1fr_1.5fr]";
 
-export default function WixtedCaseStudy() {
+export default function CaseStudy() {
   return (
     <Page>
-      <PageHero eyebrow="Case study" title="Wixted Engineering" intro={wixted.intro} />
+      <PageHero eyebrow="Case study" title="A 475-product catalogue, rebuilt" intro={caseStudy.intro} />
 
       <section className="px-6">
         <div className="mx-auto max-w-6xl">
           <dl className="fade-up grid grid-cols-2 gap-x-6 gap-y-4 border-y border-white/8 py-6 text-sm md:grid-cols-4" style={{ animationDelay: "0.9s" }}>
             <div>
               <dt className="text-subtle">Client</dt>
-              <dd className="mt-1">{wixted.client}</dd>
+              <dd className="mt-1">{caseStudy.client}</dd>
             </div>
             <div>
               <dt className="text-subtle">Location</dt>
-              <dd className="mt-1">{wixted.location}</dd>
+              <dd className="mt-1">{caseStudy.location}</dd>
             </div>
             <div className="col-span-2 md:col-span-1">
               <dt className="text-subtle">Industry</dt>
-              <dd className="mt-1">{wixted.industry}</dd>
-            </div>
-            <div>
-              <dt className="text-subtle">Live site</dt>
-              <dd className="mt-1">
-                <a href={wixted.url} className="text-orbit-100 underline decoration-orbit-400/50 underline-offset-4 hover:decoration-orbit-100">
-                  wixtedengineering.ie
-                </a>
-              </dd>
+              <dd className="mt-1">{caseStudy.industry}</dd>
             </div>
           </dl>
 
           <div className="fade-up relative mt-14" style={{ animationDelay: "1s" }}>
-            <BrowserFrame url="wixtedengineering.ie">
+            <BrowserFrame>
               <Image
-                src="/work/wixted/home-desktop.webp"
-                alt="The Wixted Engineering homepage"
+                src="/work/supplier/home-desktop.webp"
+                alt="The supplier’s new homepage"
                 width={1440}
                 height={900}
                 priority
@@ -64,7 +56,7 @@ export default function WixtedCaseStudy() {
             </BrowserFrame>
             <div className="absolute -right-3 -bottom-10 w-[24%] max-w-52 md:-right-8">
               <PhoneFrame>
-                <Image src="/work/wixted/home-mobile.webp" alt="The homepage on a phone" width={780} height={1688} sizes="210px" />
+                <Image src="/work/supplier/home-mobile.webp" alt="The homepage on a phone" width={780} height={1688} sizes="210px" />
               </PhoneFrame>
             </div>
           </div>
@@ -73,7 +65,7 @@ export default function WixtedCaseStudy() {
 
       <section className="px-6 pt-32 pb-8">
         <div className="mx-auto grid max-w-6xl grid-cols-2 gap-4 md:grid-cols-4">
-          {wixted.stats.map((s) => (
+          {caseStudy.stats.map((s) => (
             <div key={s.label} data-reveal className="rounded-3xl border border-white/8 bg-ink-900/70 p-6 md:p-8">
               <p className="text-5xl font-semibold tracking-[-0.04em] text-orbit-100 tabular-nums md:text-6xl">
                 <span data-count={s.value}>{s.value}</span>
@@ -88,7 +80,7 @@ export default function WixtedCaseStudy() {
         <div className="mx-auto max-w-6xl">
           <SectionHeading eyebrow="What I built" title="Built around how industrial buyers actually buy." />
           <div className="mt-20 space-y-28 md:space-y-40">
-            {wixted.features.map((f, i) => (
+            {caseStudy.features.map((f, i) => (
               <article key={f.title} className={`grid items-center gap-10 md:gap-16 ${layout(f.kind, i % 2 === 1)}`}>
                 <div data-reveal className={i % 2 ? (f.kind === "phone" ? "md:order-2" : "lg:order-2") : ""}>
                   <p className="text-sm font-medium text-orbit-200 tabular-nums">0{i + 1}</p>
@@ -101,7 +93,7 @@ export default function WixtedCaseStudy() {
                       <Image src={f.image} alt={f.title} width={780} height={1688} sizes="288px" />
                     </PhoneFrame>
                   ) : (
-                    <BrowserFrame url="wixtedengineering.ie">
+                    <BrowserFrame>
                       <Image src={f.image} alt={f.title} width={1440} height={900} sizes="(min-width: 1024px) 680px, 100vw" />
                     </BrowserFrame>
                   )}
@@ -123,7 +115,7 @@ export default function WixtedCaseStudy() {
             </p>
           </div>
           <ul data-reveal className="flex flex-wrap content-start gap-2.5">
-            {wixted.stack.map((t) => (
+            {caseStudy.stack.map((t) => (
               <li key={t} className="rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-sm">
                 {t}
               </li>
@@ -134,14 +126,6 @@ export default function WixtedCaseStudy() {
 
       {testimonial && <Testimonial {...testimonial} />}
 
-      <section className="px-6 pt-24 text-center">
-        <p data-reveal className="text-muted">
-          See it live at{" "}
-          <a href={wixted.url} className="text-orbit-100 underline decoration-orbit-400/50 underline-offset-4">
-            wixtedengineering.ie
-          </a>
-        </p>
-      </section>
       <CtaBand />
     </Page>
   );

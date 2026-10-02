@@ -47,10 +47,10 @@ export default function WorkPage() {
                 </p>
               </div>
               <div className="order-1 lg:order-2">
-                <BrowserFrame url={p.url.replace("https://www.", "")}>
+                <BrowserFrame>
                   <Image
                     src={p.image}
-                    alt={`The ${p.client} website`}
+                    alt="The supplier’s new website"
                     width={1440}
                     height={900}
                     sizes="(min-width: 1024px) 640px, 100vw"

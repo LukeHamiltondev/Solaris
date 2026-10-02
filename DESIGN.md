@@ -156,7 +156,7 @@ A single violet family taken from the logo, set against near-black ink and cool 
 - **Hairlines**: white at 6 to 15% opacity for borders (`white/8` on cards, `white/15` on chips, ghost buttons and the phone bezel).
 
 ### Named Rules
-**The Logo Palette Rule.** Every chromatic colour on the site comes from the logo's five violets. No second hue enters the brand layer; the only exceptions are client artefacts rendered inside device frames (the Wixted admin's own white and navy), which belong to the client, not to Solaris.
+**The Logo Palette Rule.** Every chromatic colour on the site comes from the logo's five violets. No second hue enters the brand layer; the only exceptions are client artefacts rendered inside device frames (the client admin's own white and navy), which belong to the client, not to Solaris.
 
 **The Solid Emphasis Rule.** Emphasis inside a headline is a solid colour change to orbit-200. The violet is strong enough on ink to carry the stress alone.
 
@@ -262,7 +262,7 @@ A small 24px line set drawn in code (`src/components/icons.tsx`): 1.6 stroke, ro
 
 ### Known drift (recorded, not canonized)
 Sections below the hero, built before it, still use devices the hero moved away from. They are listed here so new surfaces do not copy them; they are not part of the system.
-- **Eyebrow kickers with glow dots** (`Eyebrow` in `ui.tsx`, via `SectionHeading`, `PageHero`, `Showcase` and the Wixted case study): small uppercase violet labels over headings, each with a glowing dot.
+- **Eyebrow kickers with glow dots** (`Eyebrow` in `ui.tsx`, via `SectionHeading`, `PageHero`, `Showcase` and the client case study): small uppercase violet labels over headings, each with a glowing dot.
 - **Gradient text** (`.text-gradient`): the CTA band's "Let's talk.", the home closing band, the Work page's "next.", the mobile menu's "Get a quote"; and the related `.heading-sweep` clipped-gradient sheen on section headings.
 - **Colour blobs** (`.blob` at orbit-500/700): behind page heroes, the showcase, the home "Why" section, the CTA band and the About portrait.
 - **Icon tiles** (home "What I build" cards): icons boxed in violet-tinted rounded squares.

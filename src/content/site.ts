@@ -160,22 +160,20 @@ export const testimonial: { quote: string; name: string; role: string } | null =
 
 export const projects = [
   {
-    slug: "wixted-engineering",
-    client: "Wixted Engineering",
+    slug: "industrial-supplier",
+    client: "Irish industrial supplier",
     summary: "An industrial supplier's 475-product catalogue, rebuilt to be fast, searchable and easy to quote from.",
     tags: ["Next.js", "Product catalogue", "Quote basket", "Admin panel", "AI assistant"],
-    image: "/work/wixted/home-desktop.webp",
-    url: "https://www.wixtedengineering.ie",
+    image: "/work/supplier/home-desktop.webp",
   },
 ] as const;
 
-export const wixted = {
-  client: "Wixted Engineering Services Ltd",
-  location: "Limerick, Ireland",
+export const caseStudy = {
+  client: "Industrial supplier",
+  location: "Ireland",
   industry: "Industrial supplies: valves, actuation, gaskets and clamps",
-  url: "https://www.wixtedengineering.ie",
   intro:
-    "Wixted Engineering has supplied Ireland's power, food, pharmaceutical and manufacturing plants since 2012. Their old WooCommerce site was slow and hard to keep up to date, and it didn't match how their customers buy: engineers asking for prices on a list of parts.",
+    "This engineering firm has supplied Ireland's power, food, pharmaceutical and manufacturing plants since 2012. Their old WooCommerce site was slow and hard to keep up to date, and it didn't match how their customers buy: engineers asking for prices on a list of parts.",
   stats: [
     { value: 475, suffix: "", label: "Products moved across" },
     { value: 153, suffix: "", label: "Categories, all kept" },
@@ -186,31 +184,31 @@ export const wixted = {
     {
       title: "A catalogue that's fast to browse",
       body: "All 475 products and 153 categories moved off WooCommerce onto a fully static site. Every old product address still works, so the Google rankings came with it.",
-      image: "/work/wixted/shop-desktop.webp",
+      image: "/work/supplier/shop-desktop.webp",
       kind: "desktop",
     },
     {
       title: "Product pages built for engineers",
       body: "Clear specs, photos and a breadcrumb trail through the category tree, with search across the whole range.",
-      image: "/work/wixted/product-desktop.webp",
+      image: "/work/supplier/product-desktop.webp",
       kind: "desktop",
     },
     {
       title: "A quote basket instead of a checkout",
       body: "Industrial buyers want prices on a list of parts, not a card payment. Customers add products, note sizes and ratings, and send one request.",
-      image: "/work/wixted/quote-desktop.webp",
+      image: "/work/supplier/quote-desktop.webp",
       kind: "desktop",
     },
     {
       title: "An AI product assistant",
       body: "A chat assistant that knows the whole catalogue. Ask for “stainless ball valves” and it suggests matching products you can add straight to a quote.",
-      image: "/work/wixted/chat-mobile.webp",
+      image: "/work/supplier/chat-mobile.webp",
       kind: "phone",
     },
     {
       title: "An admin panel that fits in a pocket",
       body: "The team updates stock, products, photos and categories from their phone, or in bulk from a spreadsheet. Changes go live on their own within minutes.",
-      image: "/work/wixted/admin-mobile.webp",
+      image: "/work/supplier/admin-mobile.webp",
       kind: "phone",
     },
   ],

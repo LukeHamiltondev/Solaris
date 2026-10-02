@@ -9,7 +9,7 @@ related_targets: []
 
 Scope: the first viewport of the home page (`src/components/hero.tsx`). Mode: Persuade.
 
-Audience: Irish and UK small-business owners judging whether one developer can build what they need, often on a phone. Job: understand the offer, believe it, start a quote. Proof on hand: the Wixted Engineering rebuild, including its phone admin panel. Constraints: purple brand, Inter, Luke's logo intro hands off into the header, smooth on phones, no prices.
+Audience: Irish and UK small-business owners judging whether one developer can build what they need, often on a phone. Job: understand the offer, believe it, start a quote. Proof on hand: the industrial supplier rebuild, including its phone admin panel. Constraints: purple brand, Inter, Luke's logo intro hands off into the header, smooth on phones, no prices.
 
 Status: built code-led while Luke chooses between three layouts on the decision card (lead: "Run it from your phone"). Swap if he picks another.
 
@@ -17,7 +17,7 @@ Status: built code-led while Luke chooses between three layouts on the decision 
 
 THESIS: The client runs their own site from their phone. Refuses the split hero of headline beside a glowing logo orb on a starfield.
 
-OWN-WORLD: Near-black ink ground, the logo's three orbit rings drawn huge in thin violet strokes with the phone as their core. Solid violet emphasis, no gradient text, no glow blobs. Inside the phone, Wixted's own white-and-navy admin, rendered in code.
+OWN-WORLD: Near-black ink ground, the logo's three orbit rings drawn huge in thin violet strokes with the phone as their core. Solid violet emphasis, no gradient text, no glow blobs. Inside the phone, the client's own white-and-navy admin, rendered in code.
 
 STORY: The visitor reads the promise, sees a real client's admin change stock with a tap, and picks what they need to start a quote.
 

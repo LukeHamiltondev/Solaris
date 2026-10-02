@@ -4,11 +4,11 @@ The website for Solaris Scaling, Luke Hamilton's web design and development busi
 
 ## Editing the site
 
-All of the words live in [`src/content/site.ts`](src/content/site.ts): headline, services, prices, FAQ, about text, projects and the Wixted Engineering case study. Change them there and the pages update.
+All of the words live in [`src/content/site.ts`](src/content/site.ts): headline, services, prices, FAQ, about text, projects and the industrial supplier case study. Change them there and the pages update.
 
 - Pages: `src/app` (`page.tsx` is home; `work`, `services`, `about`, `contact`)
 - Colours and fonts: the `@theme` block in `src/app/globals.css`, taken from the logo files in `public/brand`
-- Case study screenshots: `public/work/wixted`
+- Case study screenshots: `public/work/supplier`
 - Client testimonial: set `testimonial` in `src/content/site.ts` and it appears on the home page and case study
 
 ## Animation
@@ -16,7 +16,7 @@ All of the words live in [`src/content/site.ts`](src/content/site.ts): headline,
 - **Intro:** Luke's startup intro (`src/components/intro.tsx`, styles at the end of `globals.css`) plays on the first page load of a visit. The mark grows in, a light sweeps across to reveal the name, then both float up into the header logo while the backdrop fades and the page starts its own entrance. It plays once per browser tab (open a new tab to see it again), and anyone set to reduced motion skips it.
 - **Hero:** the orbit mark draws itself on and the headline rises in word by word. Both are plain CSS, so they play before any JavaScript loads. Then the rings keep turning, tilt toward the cursor, and a glow follows it over a canvas starfield (`src/components/hero.tsx`, `starfield.tsx`).
 - **Scrolling:** Lenis smooth scrolling and GSAP ScrollTrigger, wired up once in `src/components/motion.tsx`. Pages opt in with attributes: `data-reveal` (fade and rise in), `.heading-sweep` (sheen across a heading), `data-count` (count up), `data-magnetic` (buttons drift toward the cursor), `data-tilt` (cards tilt and glow).
-- **Featured work:** pins on large screens while the Wixted homepage scrolls inside the browser frame (`src/components/showcase.tsx`).
+- **Featured work:** pins on large screens while the client homepage scrolls inside the browser frame (`src/components/showcase.tsx`).
 - **Page changes:** React `<ViewTransition>` fades pages in and out; the header stays put and the logo turns once.
 - **Reduced motion:** visitors who ask their device for less motion get everything shown instantly with nothing moving.
 
