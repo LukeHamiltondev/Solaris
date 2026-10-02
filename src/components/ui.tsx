@@ -106,18 +106,23 @@ export function BrowserFrame({
   );
 }
 
-/** A phone around a portrait screenshot. */
+/**
+ * A phone around a portrait screenshot. The screenshot sits between a status bar and a home bar, so the
+ * notch and rounded corners never cover it. Sizes are relative to the phone's width, so small phones scale.
+ */
 export function PhoneFrame({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   return (
-    <div
-      className={`rounded-[2.2rem] border border-white/15 bg-ink-900 p-2 shadow-[0_40px_100px_-20px_var(--frame-shadow)] ${className}`}
-    >
-      <div className="relative overflow-hidden rounded-[1.7rem]">
-        {children}
-        <span
-          aria-hidden="true"
-          className="absolute top-2 left-1/2 h-5 w-20 -translate-x-1/2 rounded-full bg-black"
-        />
+    <div className={`@container ${className}`}>
+      <div className="rounded-[14cqw] border border-white/15 bg-ink-900 p-[3.5cqw] shadow-[0_40px_100px_-20px_var(--frame-shadow)]">
+        <div className="overflow-hidden rounded-[10.5cqw] bg-white">
+          <div aria-hidden="true" className="flex aspect-[8/1] items-center justify-center">
+            <span className="aspect-[4/1] w-[32%] rounded-full bg-black" />
+          </div>
+          <div className="border-y border-black/5">{children}</div>
+          <div aria-hidden="true" className="flex aspect-[9/1] items-center justify-center">
+            <span className="h-[3px] w-[34%] rounded-full bg-black/80" />
+          </div>
+        </div>
       </div>
     </div>
   );
