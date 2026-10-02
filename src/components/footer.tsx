@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { nav, site } from "@/content/site";
+import { CookieSettingsLink } from "./cookie-banner";
 import { OrbitMark } from "./orbit-mark";
 
 export function Footer() {
@@ -47,7 +48,13 @@ export function Footer() {
         <p>
           © {new Date().getFullYear()} {site.name}
         </p>
-        <p>Designed and built by {site.owner}</p>
+        <p className="flex flex-wrap gap-x-4 gap-y-2">
+          <Link href="/privacy/" className="transition-colors hover:text-mist">
+            Privacy
+          </Link>
+          <CookieSettingsLink className="transition-colors hover:text-mist" />
+          <span>Designed and built by {site.owner}</span>
+        </p>
       </div>
     </footer>
   );

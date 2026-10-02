@@ -4,7 +4,7 @@ export const site = {
   name: "Solaris Scaling",
   owner: "Luke Hamilton",
   url: "https://solarisscaling.com",
-  email: "lukehamo15@gmail.com",
+  email: "luke@solarisscaling.com",
   github: "https://github.com/LukeHamiltondev",
   description:
     "Fast, custom websites for growing businesses, with the quote forms, catalogues and admin tools that turn visitors into customers.",

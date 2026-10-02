@@ -7,6 +7,7 @@ import { Footer } from "@/components/footer";
 import { Motion } from "@/components/motion";
 import { Intro } from "@/components/intro";
 import { introScript } from "@/components/intro-script";
+import { CookieBanner } from "@/components/cookie-banner";
 
 // Inter (the logo's typeface), self-hosted and preloaded, with a size-matched fallback so nothing jumps.
 const inter = localFont({
@@ -52,6 +53,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Footer />
         </div>
         <Motion />
+        <CookieBanner />
       </body>
     </html>
   );
