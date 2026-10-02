@@ -336,3 +336,184 @@ html.lenis body {
     animation: none !important;
   }
 }
+
+/* ---------- Startup intro (src/components/intro.tsx) ---------- */
+
+html.intro-skip #ss-intro {
+  display: none;
+}
+/* Hold the page's own entrance and hide the header logo until the intro hands over to it. */
+html.intro-playing :is(.word-rise, .fade-up, .orbit-ring, .orbit-core) {
+  animation-play-state: paused;
+}
+html.intro-logo :is([data-logo-mark], [data-logo-text]) {
+  opacity: 0;
+}
+
+#ss-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  /* Fallback if scripts never run: fade away on its own. */
+  animation: ss-exit 0.6s ease 6s forwards;
+}
+#ss-intro .ss-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: auto;
+  background: radial-gradient(80% 70% at 50% 50%, #292b31, #161826);
+}
+#ss-intro .ss-row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+#ss-intro .ss-markwrap {
+  position: relative;
+  width: 112px;
+  height: 112px;
+  flex: none;
+}
+#ss-intro .ss-glow {
+  position: absolute;
+  inset: -40px;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgb(145 132 217 / 0.22), transparent);
+  opacity: 0;
+  animation: ss-fade 1.2s ease-out 0.6s forwards;
+}
+#ss-intro .ss-mark {
+  position: relative;
+  transform: scale(0.06);
+  opacity: 0;
+  animation: ss-grow 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+#ss-intro .ss-mark svg {
+  display: block;
+  overflow: visible;
+}
+#ss-intro .ss-ring {
+  transform-origin: 24px 24px;
+  animation: ss-orbit linear infinite;
+}
+#ss-intro .ss-textwrap {
+  position: relative;
+  height: 72px;
+  display: flex;
+  align-items: center;
+}
+#ss-intro .ss-text {
+  font-size: 56px;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  color: var(--color-mist);
+  padding-right: 4px;
+  transform-origin: left center;
+  clip-path: inset(0 100% 0 0);
+  animation: ss-reveal 1.1s cubic-bezier(0.65, 0, 0.35, 1) 1.9s forwards;
+}
+#ss-intro .ss-line {
+  position: absolute;
+  top: -8px;
+  bottom: -8px;
+  left: 0;
+  width: 2px;
+  margin-left: -1px;
+  border-radius: 1px;
+  background: linear-gradient(transparent, #d2cefd 25%, #d2cefd 75%, transparent);
+  box-shadow: 0 0 16px #9184d9;
+  transform: scaleY(0);
+  opacity: 0;
+  animation:
+    ss-line-in 0.35s cubic-bezier(0.16, 1, 0.3, 1) 1.5s forwards,
+    ss-line-slide 1.1s cubic-bezier(0.65, 0, 0.35, 1) 1.9s forwards,
+    ss-line-out 0.4s ease-out 3s forwards;
+}
+@keyframes ss-orbit {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes ss-grow {
+  0% {
+    transform: scale(0.06);
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@keyframes ss-fade {
+  to {
+    opacity: 1;
+  }
+}
+@keyframes ss-line-in {
+  to {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+@keyframes ss-line-slide {
+  from {
+    left: 0;
+  }
+  to {
+    left: 100%;
+  }
+}
+@keyframes ss-line-out {
+  to {
+    opacity: 0;
+  }
+}
+@keyframes ss-reveal {
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+@keyframes ss-exit {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+@media (max-width: 640px) {
+  #ss-intro .ss-row {
+    gap: 18px;
+  }
+  #ss-intro .ss-markwrap,
+  #ss-intro .ss-mark svg {
+    width: 64px;
+    height: 64px;
+  }
+  #ss-intro .ss-text {
+    font-size: 32px;
+  }
+  #ss-intro .ss-textwrap {
+    height: 44px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  #ss-intro .ss-mark,
+  #ss-intro .ss-glow {
+    opacity: 1;
+    transform: none;
+  }
+  #ss-intro .ss-text {
+    clip-path: none;
+  }
+  #ss-intro .ss-line {
+    display: none;
+  }
+}

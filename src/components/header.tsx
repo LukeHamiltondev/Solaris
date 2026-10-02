@@ -62,10 +62,12 @@ export function Header() {
         }`}
       >
         <Link href="/" className="flex items-center gap-2.5 rounded-full pr-2 pl-1" aria-label={`${site.name} home`}>
-          <span ref={markRef} className="inline-flex">
+          <span ref={markRef} data-logo-mark className="inline-flex">
             <OrbitMark className="size-8" />
           </span>
-          <span className="text-[17px] font-normal tracking-tight text-mist">{site.name}</span>
+          <span data-logo-text className="text-[17px] font-normal tracking-tight text-mist">
+            {site.name}
+          </span>
         </Link>
 
         <nav aria-label="Main" className="hidden md:block">

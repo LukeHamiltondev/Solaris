@@ -10,6 +10,13 @@ gsap.registerPlugin(ScrollTrigger);
 
 let lenis: Lenis | null = null;
 
+/** Pause or resume scrolling, e.g. while the intro plays. */
+export function lockScroll(locked: boolean) {
+  document.documentElement.style.overflow = locked ? "hidden" : "";
+  if (locked) lenis?.stop();
+  else lenis?.start();
+}
+
 /** Smoothly scroll to an element or position, through Lenis when it's running. */
 export function scrollToTarget(target: string | number | HTMLElement) {
   if (lenis) lenis.scrollTo(target, { offset: -90 });
@@ -40,6 +47,7 @@ export function Motion() {
     if (reducedMotion()) return;
     lenis = new Lenis({ duration: 1.15, easing: (t) => 1 - Math.pow(1 - t, 4) });
     lenis.on("scroll", ScrollTrigger.update);
+    if (document.documentElement.classList.contains("intro-playing")) lenis.stop();
     const tick = (time: number) => lenis?.raf(time * 1000);
     gsap.ticker.add(tick);
     gsap.ticker.lagSmoothing(0);
