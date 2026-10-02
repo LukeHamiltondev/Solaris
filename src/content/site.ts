@@ -6,6 +6,8 @@ export const site = {
   url: "https://solarisscaling.com",
   email: "lukehamo15@gmail.com",
   github: "https://github.com/LukeHamiltondev",
+  /** Shows the colour switcher in the corner while a palette is being chosen. */
+  showThemePicker: true,
   description:
     "Fast, custom websites for growing businesses, with the quote forms, catalogues and admin tools that turn visitors into customers.",
 } as const;

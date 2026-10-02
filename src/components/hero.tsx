@@ -130,7 +130,7 @@ export function Hero() {
               className="fade-up absolute inset-[22%] rounded-full bg-orbit-400/25 blur-3xl"
               style={{ animationDelay: "0.6s" }}
             />
-            <OrbitMark intro spin className="relative size-full drop-shadow-[0_0_30px_rgba(145,132,217,0.35)]" />
+            <OrbitMark intro spin className="relative size-full drop-shadow-[0_0_30px_color-mix(in_oklab,var(--color-orbit-400)_35%,transparent)]" />
           </div>
         </div>
       </div>

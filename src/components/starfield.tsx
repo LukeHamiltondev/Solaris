@@ -35,6 +35,20 @@ export function Starfield() {
       }));
     };
 
+    // Star colours follow the active theme.
+    const colours = { accent: "", base: "" };
+    const readColours = () => {
+      const css = getComputedStyle(document.documentElement);
+      colours.accent = css.getPropertyValue("--color-orbit-200").trim();
+      colours.base = css.getPropertyValue("--color-mist").trim();
+    };
+    readColours();
+    const themeWatch = new MutationObserver(() => {
+      readColours();
+      if (reduce) draw(0);
+    });
+    themeWatch.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+
     let raf = 0;
     let visible = true;
     const draw = (t: number) => {
@@ -49,7 +63,7 @@ export function Starfield() {
         }
         const twinkle = reduce ? 0.6 : 0.35 + 0.65 * (0.5 + 0.5 * Math.sin(t / 900 + s.phase));
         ctx.globalAlpha = twinkle * (0.35 + s.r * 0.5);
-        ctx.fillStyle = s.hue > 0.7 ? "#b5abfc" : "#e9e9ed";
+        ctx.fillStyle = s.hue > 0.7 ? colours.accent : colours.base;
         ctx.beginPath();
         ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
         ctx.fill();
@@ -75,6 +89,7 @@ export function Starfield() {
     return () => {
       cancelAnimationFrame(raf);
       io.disconnect();
+      themeWatch.disconnect();
       ro.disconnect();
     };
   }, []);

@@ -2,9 +2,9 @@
 // `intro` draws the rings on in sequence; `spin` keeps each ring turning at its own speed.
 
 const rings = [
-  { r: 10.5, color: "#d2cefd", dash: "62 38", rotate: 200, speed: 9 },
-  { r: 16.5, color: "#9184d9", dash: "70 30", rotate: 250, speed: 15 },
-  { r: 22, color: "#796cbf", dash: "78 22", rotate: 300, speed: 24 },
+  { r: 10.5, color: "var(--ring-1)", dash: "62 38", rotate: 200, speed: 9 },
+  { r: 16.5, color: "var(--ring-2)", dash: "70 30", rotate: 250, speed: 15 },
+  { r: 22, color: "var(--ring-3)", dash: "78 22", rotate: 300, speed: 24 },
 ] as const;
 
 const seam = (dash: string) => {
@@ -38,7 +38,7 @@ export function OrbitMark({
         cx="24"
         cy="24"
         r="4.5"
-        fill="#d2cefd"
+        fill="var(--ring-1)"
         className={intro ? "orbit-core" : undefined}
         style={intro ? { animationDelay: `${delay}s` } : undefined}
       />

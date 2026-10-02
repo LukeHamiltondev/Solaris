@@ -87,7 +87,7 @@ export function BrowserFrame({
 }) {
   return (
     <div
-      className={`overflow-hidden rounded-xl border border-white/10 bg-ink-800 shadow-[0_40px_120px_-30px_rgba(0,0,0,0.8)] ${className}`}
+      className={`overflow-hidden rounded-xl border border-white/10 bg-ink-800 shadow-[0_40px_120px_-30px_var(--frame-shadow)] ${className}`}
     >
       <div className="flex items-center gap-3 border-b border-white/8 px-4 py-2.5">
         <span className="flex gap-1.5" aria-hidden="true">
@@ -111,7 +111,7 @@ export function BrowserFrame({
 export function PhoneFrame({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   return (
     <div
-      className={`rounded-[2.2rem] border border-white/15 bg-ink-900 p-2 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.9)] ${className}`}
+      className={`rounded-[2.2rem] border border-white/15 bg-ink-900 p-2 shadow-[0_40px_100px_-20px_var(--frame-shadow)] ${className}`}
     >
       <div className="relative overflow-hidden rounded-[1.7rem]">
         {children}

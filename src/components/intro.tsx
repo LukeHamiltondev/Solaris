@@ -4,20 +4,13 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { site } from "@/content/site";
 import { lockScroll } from "./motion";
-
-const SEEN_KEY = "ss-intro-seen";
+import { SEEN_KEY } from "./intro-script";
 
 const rings = [
-  { r: 10.5, color: "#d2cefd", dash: "62 38", rotate: 200, speed: 9 },
-  { r: 16.5, color: "#9184d9", dash: "70 30", rotate: 250, speed: 15 },
-  { r: 22, color: "#796cbf", dash: "78 22", rotate: 300, speed: 24 },
+  { r: 10.5, color: "var(--ring-1)", dash: "62 38", rotate: 200, speed: 9 },
+  { r: 16.5, color: "var(--ring-2)", dash: "70 30", rotate: 250, speed: 15 },
+  { r: 22, color: "var(--ring-3)", dash: "78 22", rotate: 300, speed: 24 },
 ] as const;
-
-/**
- * Runs before first paint: the intro plays once per visit (per tab). On later page loads it's skipped
- * outright, so the page appears straight away. Without JavaScript the overlay fades out on its own.
- */
-export const introScript = `try{document.documentElement.classList.add(...(sessionStorage.getItem("${SEEN_KEY}")?["intro-skip"]:["intro-playing","intro-logo"]))}catch(e){document.documentElement.classList.add("intro-playing","intro-logo")}`;
 
 const center = (r: DOMRect) => ({ x: r.left + r.width / 2, y: r.top + r.height / 2 });
 
@@ -124,7 +117,7 @@ export function Intro() {
           <div className="ss-glow" />
           <div className="ss-mark">
             <svg viewBox="0 0 48 48" width="112" height="112">
-              <circle cx="24" cy="24" r="4.5" fill="#d2cefd" />
+              <circle cx="24" cy="24" r="4.5" fill="var(--ring-1)" />
               {rings.map((ring) => (
                 <g key={ring.r} className="ss-ring" style={{ animationDuration: `${ring.speed}s` }}>
                   <circle

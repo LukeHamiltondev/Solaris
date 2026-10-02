@@ -26,9 +26,123 @@
   --animate-spin-slow: spin 24s linear infinite;
 }
 
+/* Theme extras that aren't Tailwind colours: the logo's rings, the intro backdrop, gradients, shadows. */
+:root {
+  color-scheme: dark;
+  --ring-1: var(--color-orbit-100);
+  --ring-2: var(--color-orbit-400);
+  --ring-3: var(--color-orbit-500);
+  --grad-1: var(--color-orbit-100);
+  --grad-2: var(--color-orbit-200);
+  --grad-3: var(--color-orbit-500);
+  --intro-from: #292b31;
+  --intro-to: #161826;
+  --frame-shadow: rgb(0 0 0 / 0.85);
+}
+
+/* ---------- Colour themes (being sampled; see src/content/themes.ts) ---------- */
+
+/* Navy and gold. */
+html[data-theme="solar"] {
+  --color-ink-950: #0a0f1c;
+  --color-ink-900: #0e1424;
+  --color-ink-800: #151c2f;
+  --color-ink-700: #1f2840;
+  --color-ink-600: #2c3654;
+  --color-mist: #f3efe6;
+  --color-muted: #aeb3c2;
+  --color-subtle: #8a90a3;
+  --color-orbit-100: #ffe3a3;
+  --color-orbit-200: #ffc857;
+  --color-orbit-400: #f6a43a;
+  --color-orbit-500: #ea7f2c;
+  --color-orbit-700: #b4521c;
+  --ring-1: #ffd77a;
+  --ring-2: #f6a43a;
+  --ring-3: #e0662a;
+  --intro-from: #1a2236;
+  --intro-to: #0a0f1c;
+}
+
+/* Deep teal and aqua. */
+html[data-theme="ocean"] {
+  --color-ink-950: #061416;
+  --color-ink-900: #0a1b1e;
+  --color-ink-800: #10262a;
+  --color-ink-700: #183439;
+  --color-ink-600: #23454b;
+  --color-mist: #e6f4f1;
+  --color-muted: #9fbab7;
+  --color-subtle: #7f9c99;
+  --color-orbit-100: #b8f5e8;
+  --color-orbit-200: #6ee7d0;
+  --color-orbit-400: #2dc5ad;
+  --color-orbit-500: #14a08d;
+  --color-orbit-700: #0d6e62;
+  --ring-1: #a7f3e4;
+  --ring-2: #34d1b6;
+  --ring-3: #0f9c88;
+  --intro-from: #12292d;
+  --intro-to: #061416;
+}
+
+/* Light themes: the accent scale runs the other way (100 is the strongest), and "white" overlays turn dark. */
+html[data-theme="daylight"],
+html[data-theme="cobalt"] {
+  color-scheme: light;
+  --grad-3: var(--color-orbit-400);
+}
+
+/* Warm cream and coral. */
+html[data-theme="daylight"] {
+  --color-ink-950: #faf7f2;
+  --color-ink-900: #f3eee5;
+  --color-ink-800: #fffdf9;
+  --color-ink-700: #e8e1d5;
+  --color-ink-600: #d9d0c1;
+  --color-mist: #1d1b18;
+  --color-muted: #5e5850;
+  --color-subtle: #6f685e;
+  --color-white: #1d1b18;
+  --color-orbit-100: #a63a17;
+  --color-orbit-200: #b5401b;
+  --color-orbit-400: #e06a3e;
+  --color-orbit-500: #f08c63;
+  --color-orbit-700: #f7c3ad;
+  --ring-1: #b5401b;
+  --ring-2: #e97a4c;
+  --ring-3: #f4a988;
+  --intro-from: #fffdf9;
+  --intro-to: #efe8dc;
+  --frame-shadow: rgb(70 45 20 / 0.28);
+}
+
+/* Clean white and electric blue. */
+html[data-theme="cobalt"] {
+  --color-ink-950: #f5f7fb;
+  --color-ink-900: #edf1f7;
+  --color-ink-800: #ffffff;
+  --color-ink-700: #dfe5ef;
+  --color-ink-600: #cbd3e1;
+  --color-mist: #0f1729;
+  --color-muted: #4a5568;
+  --color-subtle: #5f6b82;
+  --color-white: #0f1729;
+  --color-orbit-100: #1d3cc4;
+  --color-orbit-200: #2950e8;
+  --color-orbit-400: #4f7bff;
+  --color-orbit-500: #7c9cff;
+  --color-orbit-700: #c3d2ff;
+  --ring-1: #2950e8;
+  --ring-2: #4f7bff;
+  --ring-3: #8fabff;
+  --intro-from: #ffffff;
+  --intro-to: #e8eef8;
+  --frame-shadow: rgb(20 35 80 / 0.25);
+}
+
 @layer base {
   html {
-    color-scheme: dark;
     background: var(--color-ink-950);
     -webkit-tap-highlight-color: transparent;
   }
@@ -62,7 +176,7 @@ html.lenis body {
 /* ---------- Text ---------- */
 
 .text-gradient {
-  background: linear-gradient(100deg, var(--color-orbit-100) 0%, var(--color-orbit-200) 40%, var(--color-orbit-500) 100%);
+  background: linear-gradient(100deg, var(--grad-1) 0%, var(--grad-2) 40%, var(--grad-3) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -365,7 +479,7 @@ html.intro-logo :is([data-logo-mark], [data-logo-text]) {
   position: absolute;
   inset: 0;
   pointer-events: auto;
-  background: radial-gradient(80% 70% at 50% 50%, #292b31, #161826);
+  background: radial-gradient(80% 70% at 50% 50%, var(--intro-from), var(--intro-to));
 }
 #ss-intro .ss-row {
   position: relative;
@@ -383,7 +497,7 @@ html.intro-logo :is([data-logo-mark], [data-logo-text]) {
   position: absolute;
   inset: -40px;
   border-radius: 50%;
-  background: radial-gradient(closest-side, rgb(145 132 217 / 0.22), transparent);
+  background: radial-gradient(closest-side, color-mix(in oklab, var(--color-orbit-400) 22%, transparent), transparent);
   opacity: 0;
   animation: ss-fade 1.2s ease-out 0.6s forwards;
 }
@@ -426,8 +540,8 @@ html.intro-logo :is([data-logo-mark], [data-logo-text]) {
   width: 2px;
   margin-left: -1px;
   border-radius: 1px;
-  background: linear-gradient(transparent, #d2cefd 25%, #d2cefd 75%, transparent);
-  box-shadow: 0 0 16px #9184d9;
+  background: linear-gradient(transparent, var(--ring-1) 25%, var(--ring-1) 75%, transparent);
+  box-shadow: 0 0 16px var(--ring-2);
   transform: scaleY(0);
   opacity: 0;
   animation:

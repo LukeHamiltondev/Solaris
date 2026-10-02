@@ -5,7 +5,10 @@ import { site } from "@/content/site";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { Motion } from "@/components/motion";
-import { Intro, introScript } from "@/components/intro";
+import { Intro } from "@/components/intro";
+import { introScript } from "@/components/intro-script";
+import { ThemePicker } from "@/components/theme-picker";
+import { themeScript } from "@/content/themes";
 
 // Inter (the logo's typeface), self-hosted and preloaded, with a size-matched fallback so nothing jumps.
 const inter = localFont({
@@ -30,14 +33,13 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: "#0b0b10",
-  colorScheme: "dark",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en-IE" className={inter.variable} suppressHydrationWarning>
       <body className="min-h-dvh">
-        <script dangerouslySetInnerHTML={{ __html: introScript }} />
+        <script dangerouslySetInnerHTML={{ __html: themeScript + introScript }} />
         <Intro />
         <a
           href="#main"
@@ -52,6 +54,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Footer />
         </div>
         <Motion />
+        {site.showThemePicker && <ThemePicker />}
       </body>
     </html>
   );

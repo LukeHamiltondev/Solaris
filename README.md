@@ -11,6 +11,13 @@ All of the words live in [`src/content/site.ts`](src/content/site.ts): headline,
 - Case study screenshots: `public/work/wixted`
 - Client testimonial: set `testimonial` in `src/content/site.ts` and it appears on the home page and case study
 
+## Colours
+
+The palettes are in `src/app/globals.css`: the default at the top, the others as `html[data-theme="…"]` blocks.
+While a palette is being chosen, a switcher sits in the bottom-left corner (`showThemePicker` in
+`src/content/site.ts`), and `?theme=solar` in any URL picks one. To settle on a theme, copy its values into
+the defaults, then delete the theme blocks, `src/content/themes.ts` and the switcher.
+
 ## Animation
 
 - **Intro:** Luke's startup intro (`src/components/intro.tsx`, styles at the end of `globals.css`) plays on the first page load of a visit. The mark grows in, a light sweeps across to reveal the name, then both float up into the header logo while the backdrop fades and the page starts its own entrance. It plays once per browser tab (open a new tab to see it again), and anyone set to reduced motion skips it.
