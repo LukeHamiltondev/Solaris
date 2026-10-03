@@ -1,23 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-
-  // Emit a static site to `out/` so Cloudflare Pages can serve it directly.
-  // Every page in this project is fully static (no API routes, no server
-  // components that need a server), so static export is the simplest path.
+  // Static site in `out/` for Cloudflare Pages (see wrangler.toml).
   output: "export",
-
-  // Cleaner URLs on Pages: /examples/index.html instead of /examples.html
+  // /work/index.html rather than /work.html, so Pages serves clean URLs.
   trailingSlash: true,
-
-  // Disable production source maps. Cloudflare Pages rejects any single file
-  // larger than 25 MiB, and Next.js/Turbopack was emitting a 54.9 MiB
-  // server chunk source map that broke the deploy.
+  // No image server on a static export; screenshots are pre-sized WebP.
+  images: { unoptimized: true },
   productionBrowserSourceMaps: false,
-  experimental: {
-    // Turbopack-specific: don't emit server source maps in production.
-    serverSourceMaps: false,
-  },
 };
 
 export default nextConfig;

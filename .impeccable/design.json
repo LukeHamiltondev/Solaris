@@ -1,0 +1,441 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-02T00:00:00Z",
+  "title": "Design System: Solaris Scaling",
+  "extensions": {
+    "colorMeta": {
+      "orbit-100": {
+        "role": "primary",
+        "displayName": "Moonlit Lavender",
+        "canonical": "#d2cefd",
+        "purpose": "Inner ring, logo core, primary hover.",
+        "tonalRamp": [
+          "#5d5294",
+          "#796cbf",
+          "#9184d9",
+          "#b5abfc",
+          "#d2cefd"
+        ]
+      },
+      "orbit-200": {
+        "role": "primary",
+        "displayName": "Pale Orbit Violet",
+        "canonical": "#b5abfc",
+        "purpose": "Primary action, solid headline emphasis, focus ring.",
+        "tonalRamp": [
+          "#5d5294",
+          "#796cbf",
+          "#9184d9",
+          "#b5abfc",
+          "#d2cefd"
+        ]
+      },
+      "orbit-400": {
+        "role": "secondary",
+        "displayName": "Dusk Violet",
+        "canonical": "#9184d9",
+        "purpose": "Middle ring, link underline.",
+        "tonalRamp": [
+          "#5d5294",
+          "#796cbf",
+          "#9184d9",
+          "#b5abfc",
+          "#d2cefd"
+        ]
+      },
+      "orbit-500": {
+        "role": "secondary",
+        "displayName": "Deep Orbit Violet",
+        "canonical": "#796cbf",
+        "purpose": "Outer ring, selection.",
+        "tonalRamp": [
+          "#5d5294",
+          "#796cbf",
+          "#9184d9",
+          "#b5abfc",
+          "#d2cefd"
+        ]
+      },
+      "orbit-700": {
+        "role": "secondary",
+        "displayName": "Night Violet",
+        "canonical": "#5d5294",
+        "purpose": "Darkest violet; only in legacy blob glows (drift).",
+        "tonalRamp": [
+          "#5d5294",
+          "#796cbf",
+          "#9184d9",
+          "#b5abfc",
+          "#d2cefd"
+        ]
+      },
+      "ink-950": {
+        "role": "neutral",
+        "displayName": "Ink Black",
+        "canonical": "#0b0b10",
+        "purpose": "Page ground, ink plates, text on violet.",
+        "tonalRamp": [
+          "#0b0b10",
+          "#0f0f14",
+          "#17171f",
+          "#22222d",
+          "#33333f",
+          "#8c8ca0",
+          "#a3a3b2",
+          "#e9e9ed"
+        ]
+      },
+      "ink-900": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "#0f0f14",
+        "purpose": "Card surfaces, glass header base.",
+        "tonalRamp": [
+          "#0b0b10",
+          "#0f0f14",
+          "#17171f",
+          "#22222d",
+          "#33333f",
+          "#8c8ca0",
+          "#a3a3b2",
+          "#e9e9ed"
+        ]
+      },
+      "ink-800": {
+        "role": "neutral",
+        "displayName": "Raised Ink",
+        "canonical": "#17171f",
+        "purpose": "Device frame bezels.",
+        "tonalRamp": [
+          "#0b0b10",
+          "#0f0f14",
+          "#17171f",
+          "#22222d",
+          "#33333f",
+          "#8c8ca0",
+          "#a3a3b2",
+          "#e9e9ed"
+        ]
+      },
+      "ink-700": {
+        "role": "neutral",
+        "displayName": "Ink Line",
+        "canonical": "#22222d",
+        "purpose": "Tonal step.",
+        "tonalRamp": [
+          "#0b0b10",
+          "#0f0f14",
+          "#17171f",
+          "#22222d",
+          "#33333f",
+          "#8c8ca0",
+          "#a3a3b2",
+          "#e9e9ed"
+        ]
+      },
+      "ink-600": {
+        "role": "neutral",
+        "displayName": "Ink Line Light",
+        "canonical": "#33333f",
+        "purpose": "Tonal step.",
+        "tonalRamp": [
+          "#0b0b10",
+          "#0f0f14",
+          "#17171f",
+          "#22222d",
+          "#33333f",
+          "#8c8ca0",
+          "#a3a3b2",
+          "#e9e9ed"
+        ]
+      },
+      "mist": {
+        "role": "neutral",
+        "displayName": "Mist",
+        "canonical": "#e9e9ed",
+        "purpose": "Headings and primary text.",
+        "tonalRamp": [
+          "#0b0b10",
+          "#0f0f14",
+          "#17171f",
+          "#22222d",
+          "#33333f",
+          "#8c8ca0",
+          "#a3a3b2",
+          "#e9e9ed"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted Grey",
+        "canonical": "#a3a3b2",
+        "purpose": "Body copy, inactive nav.",
+        "tonalRamp": [
+          "#0b0b10",
+          "#0f0f14",
+          "#17171f",
+          "#22222d",
+          "#33333f",
+          "#8c8ca0",
+          "#a3a3b2",
+          "#e9e9ed"
+        ]
+      },
+      "subtle": {
+        "role": "neutral",
+        "displayName": "Subtle Grey",
+        "canonical": "#8c8ca0",
+        "purpose": "Captions, column labels.",
+        "tonalRamp": [
+          "#0b0b10",
+          "#0f0f14",
+          "#17171f",
+          "#22222d",
+          "#33333f",
+          "#8c8ca0",
+          "#a3a3b2",
+          "#e9e9ed"
+        ]
+      },
+      "graphite": {
+        "role": "neutral",
+        "displayName": "Graphite",
+        "canonical": "#292b31",
+        "purpose": "Startup intro backdrop.",
+        "tonalRamp": [
+          "#08090a",
+          "#101114",
+          "#191a1d",
+          "#212227",
+          "#292b31",
+          "#5e6064",
+          "#949598",
+          "#cacacc"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Home hero headline only; emphasis phrase in solid orbit-200."
+      },
+      "display-page": {
+        "displayName": "Display, inner pages",
+        "purpose": "Page-hero headlines."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section headings, 2.25rem rising to 3rem at md."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Card and step titles."
+      },
+      "body-lead": {
+        "displayName": "Body lead",
+        "purpose": "Paragraph under a display or headline, muted."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Card copy and running text, muted."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Buttons and the hero text link."
+      },
+      "caption": {
+        "displayName": "Caption",
+        "purpose": "Figure captions and demo disclaimers, subtle."
+      }
+    },
+    "shadows": [
+      {
+        "name": "device-drop",
+        "value": "0 50px 100px -30px rgb(0 0 0 / 0.85)",
+        "purpose": "Grounds the hero phone; PhoneFrame and BrowserFrame use 0 40px 100px -20px and 0 40px 120px -30px with the same --frame-shadow."
+      },
+      {
+        "name": "button-lift",
+        "value": "0 14px 32px -14px rgb(0 0 0 / 0.7)",
+        "purpose": "Under the primary button only."
+      },
+      {
+        "name": "header-float",
+        "value": "0 25px 50px -12px rgb(0 0 0 / 0.4)",
+        "purpose": "The header pill once the page scrolls."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out-expo",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Default easing for entrances, nav pill, arrow nudge, sheen."
+      },
+      {
+        "name": "fade-up",
+        "value": "0.9s ease-out-expo, translateY(16px) to none",
+        "purpose": "Staggered entrance for hero blocks."
+      },
+      {
+        "name": "hero-orbit-spin",
+        "value": "linear infinite; 70s / 110s / 160s",
+        "purpose": "Hero rings turn on desktop (>=1024px, hover devices) only; still on phones and under reduced motion."
+      },
+      {
+        "name": "orbit-live",
+        "value": "stroke-opacity and stroke-width, 700ms",
+        "purpose": "Inner hero ring brightens and thickens when the demo save lands."
+      },
+      {
+        "name": "page-transition",
+        "value": "out 180ms ease-in; in 420ms ease-out-expo after 120ms",
+        "purpose": "View transitions between pages."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      }
+    ],
+    "surfaces": [
+      {
+        "name": "ink-plate",
+        "value": "radial-gradient(closest-side, #0b0b10 72%, transparent) at inset -1.5rem -2.5rem",
+        "purpose": "Pool behind small copy and controls where orbits pass."
+      },
+      {
+        "name": "glass",
+        "value": "color-mix(in oklab, #0f0f14 72%, transparent) + blur(16px) saturate(140%); 94% solid, no blur, below 768px",
+        "purpose": "Scrolled header."
+      }
+    ],
+    "knownDrift": [
+      "Eyebrow kickers with glow dots (ui.tsx Eyebrow via SectionHeading, PageHero, Showcase, case study).",
+      "Gradient text (.text-gradient in CTA band, home closing band, Work page, mobile menu) and the .heading-sweep clipped-gradient sheen.",
+      "Colour blobs (.blob at orbit-500/700) behind page heroes, showcase, home Why, CTA band, About portrait.",
+      "Icon tiles on home What I build cards.",
+      "Glowing gradient line on the process timeline."
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The main call to action: violet pill with a trailing arrow and a hover sheen.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\">Get a free quote <svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M4.5 12h15M13.5 6l6 6-6 6\"/></svg></a>",
+      "css": ".ds-btn-primary{position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:8px;padding:14px 24px;border-radius:9999px;background:var(--color-orbit-200,#b5abfc);color:var(--color-ink-950,#0b0b10);font:600 15px/1.5 Inter,'Helvetica Neue',Arial,sans-serif;text-decoration:none;box-shadow:0 14px 32px -14px rgb(0 0 0/.7);transition:background-color .15s}.ds-btn-primary svg{transition:transform .5s cubic-bezier(.16,1,.3,1)}.ds-btn-primary::after{content:'';position:absolute;inset:0;transform:translateX(-120%) skewX(-20deg);background:linear-gradient(90deg,transparent,rgb(255 255 255/.35),transparent);pointer-events:none}.ds-btn-primary:hover{background:var(--color-orbit-100,#d2cefd)}.ds-btn-primary:hover svg{transform:translateX(4px)}.ds-btn-primary:hover::after{transform:translateX(120%) skewX(-20deg);transition:transform .8s cubic-bezier(.16,1,.3,1)}.ds-btn-primary:focus-visible{outline:2px solid var(--color-orbit-200,#b5abfc);outline-offset:3px}"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Secondary action beside a primary: hairline pill.",
+      "html": "<div class=\"ds-ink\"><a class=\"ds-btn-ghost\" href=\"#\">See my work <svg viewBox=\"0 0 24 24\" width=\"16\" height=\"16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M4.5 12h15M13.5 6l6 6-6 6\"/></svg></a></div>",
+      "css": ".ds-ink{background:#0b0b10;padding:24px}.ds-btn-ghost{display:inline-flex;align-items:center;gap:8px;padding:14px 24px;border-radius:9999px;border:1px solid rgb(255 255 255/.15);color:var(--color-mist,#e9e9ed);font:600 15px/1.5 Inter,'Helvetica Neue',Arial,sans-serif;text-decoration:none;transition:border-color .15s,background-color .15s}.ds-btn-ghost:hover{border-color:rgb(255 255 255/.3);background:rgb(255 255 255/.05)}.ds-btn-ghost:focus-visible{outline:2px solid var(--color-orbit-200,#b5abfc);outline-offset:3px}"
+    },
+    {
+      "name": "Text Link",
+      "kind": "custom",
+      "refersTo": "label",
+      "description": "Hero secondary action: mist text with a violet underline.",
+      "html": "<div class=\"ds-ink-l\"><a class=\"ds-link\" href=\"#\">See my work</a></div>",
+      "css": ".ds-ink-l{background:#0b0b10;padding:24px}.ds-link{color:var(--color-mist,#e9e9ed);font:600 15px/1.5 Inter,'Helvetica Neue',Arial,sans-serif;text-decoration:underline;text-decoration-color:rgb(145 132 217/.6);text-underline-offset:6px;transition:text-decoration-color .15s}.ds-link:hover{text-decoration-color:var(--color-orbit-100,#d2cefd)}.ds-link:focus-visible{outline:2px solid var(--color-orbit-200,#b5abfc);outline-offset:3px}"
+    },
+    {
+      "name": "Need Chips",
+      "kind": "chip",
+      "refersTo": "chip-need",
+      "description": "Hero choices that open the quote form preset to a need.",
+      "html": "<div class=\"ds-chips\"><p class=\"ds-chips-q\">What do you need?</p><ul><li><a href=\"#\">A new website</a></li><li><a href=\"#\">A catalogue or shop</a></li><li><a href=\"#\">A custom tool</a></li></ul></div>",
+      "css": ".ds-chips{background:#0b0b10;padding:24px;font-family:Inter,'Helvetica Neue',Arial,sans-serif}.ds-chips-q{margin:0;color:#e9e9ed;font-size:14px;font-weight:500}.ds-chips ul{list-style:none;margin:12px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}.ds-chips a{display:inline-flex;padding:10px 16px;border-radius:9999px;border:1px solid rgb(255 255 255/.15);color:#e9e9ed;font-size:15px;text-decoration:none;transition:border-color .15s,background-color .15s}.ds-chips a:hover{border-color:#b5abfc;background:rgb(181 171 252/.1)}.ds-chips a:focus-visible{outline:2px solid #b5abfc;outline-offset:3px}"
+    },
+    {
+      "name": "Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Content card: translucent ink, hairline border, large soft corners.",
+      "html": "<div class=\"ds-card-wrap\"><article class=\"ds-card\"><h3>Business websites</h3><p>Fast, clear sites that turn visitors into enquiries.</p></article></div>",
+      "css": ".ds-card-wrap{background:#0b0b10;padding:24px}.ds-card{border-radius:1.5rem;border:1px solid rgb(255 255 255/.08);background:rgb(15 15 20/.7);padding:32px;font-family:Inter,'Helvetica Neue',Arial,sans-serif;transition:border-color .4s}.ds-card:hover{border-color:rgb(181 171 252/.5)}.ds-card h3{margin:0;color:#e9e9ed;font-size:20px;font-weight:600;letter-spacing:-.025em}.ds-card p{margin:12px 0 0;color:#a3a3b2;line-height:1.625}"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Floating pill header with sliding highlight and a small primary pill.",
+      "html": "<div class=\"ds-nav-wrap\"><nav class=\"ds-nav\"><span class=\"ds-nav-brand\">Solaris Scaling</span><span class=\"ds-nav-links\"><a href=\"#\" aria-current=\"page\">Work</a><a href=\"#\">Services</a><a href=\"#\">About</a></span><a class=\"ds-nav-cta\" href=\"#\">Get a quote</a></nav></div>",
+      "css": ".ds-nav-wrap{background:#0b0b10;padding:16px}.ds-nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:8px 12px;border-radius:9999px;border:1px solid rgb(255 255 255/.1);background:color-mix(in oklab,#0f0f14 72%,transparent);backdrop-filter:blur(16px) saturate(140%);box-shadow:0 25px 50px -12px rgb(0 0 0/.4);font-family:Inter,'Helvetica Neue',Arial,sans-serif}.ds-nav-brand{color:#e9e9ed;font-size:17px;letter-spacing:-.025em}.ds-nav-links{display:flex}.ds-nav-links a{padding:8px 16px;border-radius:9999px;color:#a3a3b2;font-size:14px;text-decoration:none;transition:color .15s,background-color .5s cubic-bezier(.16,1,.3,1)}.ds-nav-links a:hover,.ds-nav-links a[aria-current=page]{color:#e9e9ed;background:rgb(255 255 255/.08)}.ds-nav-links a:focus-visible,.ds-nav-cta:focus-visible{outline:2px solid #b5abfc;outline-offset:3px}.ds-nav-cta{padding:10px 20px;border-radius:9999px;background:#b5abfc;color:#0b0b10;font-size:14px;font-weight:600;text-decoration:none;transition:background-color .15s}.ds-nav-cta:hover{background:#d2cefd}"
+    },
+    {
+      "name": "Hero Orbits with Phone",
+      "kind": "custom",
+      "refersTo": "phone-frame",
+      "description": "Signature: the logo's three rings, hairline and dashed, centred on a phone frame; small copy sits on an ink plate.",
+      "html": "<div class=\"ds-orbit-stage\"><svg class=\"ds-orbit ds-o1\" viewBox=\"0 0 100 100\"><circle cx=\"50\" cy=\"50\" r=\"49.5\" fill=\"none\" stroke=\"#d2cefd\" stroke-opacity=\".9\" stroke-width=\"1.5\" vector-effect=\"non-scaling-stroke\" stroke-linecap=\"round\" pathLength=\"100\" stroke-dasharray=\"62 38\" transform=\"rotate(200 50 50)\"/></svg><svg class=\"ds-orbit ds-o2\" viewBox=\"0 0 100 100\"><circle cx=\"50\" cy=\"50\" r=\"49.5\" fill=\"none\" stroke=\"#9184d9\" stroke-opacity=\".7\" stroke-width=\"1\" vector-effect=\"non-scaling-stroke\" stroke-linecap=\"round\" pathLength=\"100\" stroke-dasharray=\"70 30\" transform=\"rotate(250 50 50)\"/></svg><div class=\"ds-phone\"><div class=\"ds-phone-screen\"><span class=\"ds-island\"></span></div></div><p class=\"ds-plate\">The stock screen I built for the industrial supplier.</p></div>",
+      "css": ".ds-orbit-stage{position:relative;overflow:hidden;height:420px;background:#0b0b10;display:grid;place-items:center;font-family:Inter,'Helvetica Neue',Arial,sans-serif}.ds-orbit{position:absolute;top:50%;left:50%;translate:-50% -50%;animation:ds-spin linear infinite}.ds-o1{width:300px;height:300px;animation-duration:70s}.ds-o2{width:520px;height:520px;animation-duration:110s}.ds-phone{position:relative;width:132px;height:250px;padding:6px;border-radius:2rem;border:1px solid rgb(255 255 255/.15);background:#17171f;box-shadow:0 50px 100px -30px rgb(0 0 0/.85)}.ds-phone-screen{position:relative;height:100%;border-radius:1.6rem;background:#f3f5f9}.ds-island{position:absolute;top:6px;left:50%;translate:-50% 0;width:44px;height:12px;border-radius:9999px;background:#000}.ds-plate{position:absolute;bottom:12px;margin:0;padding:8px 12px;border-radius:.75rem;background:rgb(11 11 16/.85);color:#8c8ca0;font-size:14px}@keyframes ds-spin{to{rotate:360deg}}@media (prefers-reduced-motion:reduce){.ds-orbit{animation:none}}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Orbit Around the Work",
+    "overview": "Solaris Scaling lives on a near-black ink ground, lit only by the logo's own violet. The identity is the orbit mark (a core and three partial rings), and the system grows out of it: the same three rings, with the same dash patterns and rotations, appear at 32px in the header and at viewport-bleeding scale in the home hero, where the core is a phone running a real client's admin screen. The proof sits at the centre; the brand circles it.\n\nThe surface is calm and dark so violet can do all the emphasis work. Type is Inter (the logo's typeface), set large, tight and semibold for headlines, and plain for body copy in a soft grey. Depth comes from tonal ink steps, hairline white borders, and long, soft drop shadows under device frames, never from coloured glows in the hero's vocabulary. Motion is slow and continuous on desktop (orbits turning over 70 to 160 seconds), still on phones, and absent under reduced motion; the site must stay smooth on a phone.\n\nThe home hero (`src/components/hero.tsx`) is the newest and most deliberate expression of the world. Several older sections below it still carry an earlier vocabulary; see \"Known drift\" under Do's and Don'ts.",
+    "keyCharacteristics": [
+      "Near-black ink ground (ink-950) with tonal ink steps for surfaces.",
+      "One accent family: the logo's five violets, used solid.",
+      "The orbit rings as the signature device, from logo scale to viewport scale.",
+      "Inter throughout, tight negative tracking on display sizes.",
+      "Pills for every interactive control; large soft radii for frames and cards.",
+      "Real work shown in code-rendered device frames, not decorative illustration."
+    ],
+    "rules": [
+      {
+        "name": "The Logo Palette Rule",
+        "body": "Every chromatic colour on the site comes from the logo's five violets. No second hue enters the brand layer; the only exceptions are client artefacts rendered inside device frames (the client admin's own white and navy), which belong to the client, not to Solaris.",
+        "section": "colors"
+      },
+      {
+        "name": "The Solid Emphasis Rule",
+        "body": "Emphasis inside a headline is a solid colour change to orbit-200. The violet is strong enough on ink to carry the stress alone.",
+        "section": "colors"
+      },
+      {
+        "name": "The Tight Display Rule",
+        "body": "Display sizes track at -0.04em and headlines at -0.03em; body copy keeps Inter's default tracking.",
+        "section": "typography"
+      },
+      {
+        "name": "The Ink Plate Rule",
+        "body": "Where large orbits pass behind small copy (paragraphs, choices, buttons, captions), that copy sits on an ink pool: a radial gradient of ink-950 (solid to 72%, fading out) extending 1.5rem above and below and 2.5rem to the sides, or for a caption a rounded (0.75rem) ink-950 plate at 85%. Rings may cross a display headline; they never cross body text or controls.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Black Shadow Rule",
+        "body": "Shadows are black and soft. Colour belongs to strokes and fills, not to light.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** put the emphasis in a headline in solid orbit-200 (The Solid Emphasis Rule).",
+      "**Do** reuse the logo's ring geometry (same dash patterns and rotations) whenever orbits appear, at any scale, with non-scaling hairline strokes.",
+      "**Do** sit small copy and controls on an ink plate wherever orbits pass behind them (The Ink Plate Rule).",
+      "**Do** stop continuous motion below 1024px and on touch devices, and stop all motion under `prefers-reduced-motion`.",
+      "**Do** show real client work inside device frames; let a client artefact keep its own colours inside the frame.",
+      "**Do** make every interactive control a pill, and keep focus visible with the 2px orbit-200 outline."
+    ],
+    "donts": [
+      "**Don't** introduce a hue outside the logo's five violets in the brand layer (The Logo Palette Rule).",
+      "**Don't** use coloured glow shadows or blurred colour blobs for depth; shadows are soft and black (The Black Shadow Rule). The startup intro is the one exception: Luke's mark-and-name reveal keeps its own soft orbit-400 halo and lit reveal line, scoped to the intro.",
+      "**Don't** run orbit strokes through body text, choices or buttons.",
+      "**Don't** use `filter: blur()` or live `backdrop-filter` on surfaces that scroll on phones.",
+      "**Don't** set display type at default tracking; it goes to -0.04em."
+    ]
+  }
+}
