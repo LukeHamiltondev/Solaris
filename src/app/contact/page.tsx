@@ -6,7 +6,7 @@ import { Page } from "@/components/ui";
 
 export const metadata: Metadata = {
   title: "Get a quote",
-  description: "Tell me about your business and your website, and I'll come back with ideas and a fixed quote.",
+  description: "Tell us about your business and your website, and we'll come back with ideas and a fixed quote.",
 };
 
 export default function ContactPage() {
@@ -14,7 +14,7 @@ export default function ContactPage() {
     <Page>
       <PageHero
         title="Let's build something that works."
-        intro="A few lines is plenty. I reply within one working day."
+        intro="A few lines is plenty. We reply within one working day."
       />
       <section className="px-6 pb-32">
         <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[1.5fr_1fr]">
@@ -31,7 +31,7 @@ export default function ContactPage() {
             <div>
               <h2 className="text-[15px] font-semibold text-mist">What happens next</h2>
               <ol className="mt-4 space-y-4 text-[15px] text-muted">
-                <li><span className="text-mist">1.</span> I reply within a day.</li>
+                <li><span className="text-mist">1.</span> We reply within a day.</li>
                 <li><span className="text-mist">2.</span> We have a short call.</li>
                 <li><span className="text-mist">3.</span> You get a fixed quote.</li>
               </ol>

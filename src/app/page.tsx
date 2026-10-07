@@ -13,7 +13,7 @@ export default function HomePage() {
 
       <section className="px-6 py-28 md:py-36">
         <div className="mx-auto max-w-6xl">
-          <SectionHeading title="What I build." />
+          <SectionHeading title="What we build." />
           {/* One row per kind of build, each ending in the quote form preset to it, like the hero's choices. */}
           <ul className="mt-16 border-b border-white/12">
             {builds.map((b) => (

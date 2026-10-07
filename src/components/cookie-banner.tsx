@@ -62,7 +62,7 @@ export function CookieBanner() {
     >
       <p className="text-[15px] font-semibold text-mist">Cookies</p>
       <p className="mt-1.5 text-sm leading-relaxed text-muted">
-        This site uses essential storage so it works properly. With your OK, I&apos;d also like to use analytics
+        This site uses essential storage so it works properly. With your OK, we&apos;d also like to use analytics
         cookies to see which pages help people. Read the{" "}
         <Link href="/privacy/" className="text-orbit-100 underline decoration-orbit-400/50 underline-offset-4">
           privacy policy

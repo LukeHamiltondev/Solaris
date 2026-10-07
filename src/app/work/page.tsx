@@ -8,7 +8,7 @@ import { BrowserFrame, CtaBand, Page } from "@/components/ui";
 
 export const metadata: Metadata = {
   title: "Work",
-  description: "Websites I've designed and built, and what they do for the businesses behind them.",
+  description: "Websites we've designed and built, and what they do for the businesses behind them.",
 };
 
 export default function WorkPage() {

@@ -39,7 +39,7 @@ Custom-built websites that bring in enquiries, plus the working tools the busine
 - Colour: purple/violet from the logo (`#d2cefd`, `#b5abfc`, `#9184d9`, `#796cbf`, `#5d5294`). Luke sampled other palettes and chose to keep purple (2026-10-02).
 - Luke's own startup intro: the mark grows in, the name is revealed, then both fly into the header logo. Keep it.
 - Luke wants motion that impresses ("wow"), but does not want a hero that looks like every AI-generated site (2026-10-02).
-- Voice: first person, plain, direct ("I design and build…"). Headline "Websites that win you work."
+- Voice: "we", plain and direct (Luke switched from "I" to "we" on 2026-10-07). Headline "Websites that win you work."
 
 ## Evidence on Hand
 
@@ -50,5 +50,5 @@ Custom-built websites that bring in enquiries, plus the working tools the busine
 
 1. Show the work before describing it.
 2. Every page leads to a quote request.
-3. One person, start to finish: speak as Luke, never as an agency.
+3. Speak as "we" (Luke, 2026-10-07), plainly; no agency jargon.
 4. Fast is part of the product: the site itself must prove it on a phone.

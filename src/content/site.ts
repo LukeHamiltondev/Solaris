@@ -5,6 +5,8 @@ export const site = {
   owner: "Luke Hamilton",
   url: "https://solarisscaling.com",
   email: "luke@solarisscaling.com",
+  // Quote form endpoint from Formspree (formspree.io). Leave empty to fall back to opening the email app.
+  formspree: "",
   github: "https://github.com/LukeHamiltondev",
   description:
     "Fast, custom websites for growing businesses, with the quote forms, catalogues and admin tools that turn visitors into customers.",
@@ -54,16 +56,16 @@ export const reasons = [
     body: "Change things from your phone, no developer needed.",
   },
   {
-    title: "One person, start to finish",
-    body: "You deal with me, start to finish.",
+    title: "Start to finish",
+    body: "The people you talk to build your site.",
   },
 ] as const;
 
 export const steps = [
   { title: "Call", body: "A short chat about your business." },
   { title: "Plan & quote", body: "A fixed price before any work starts." },
-  { title: "Design & build", body: "You see it take shape as I build." },
-  { title: "Launch & support", body: "It goes live, and I stay on hand." },
+  { title: "Design & build", body: "You see it take shape as we build." },
+  { title: "Launch & support", body: "It goes live, and we stay on hand." },
 ] as const;
 
 // What's on offer. There are no fixed packages: every project gets its own quote.
@@ -107,7 +109,7 @@ export const services = [
 ] as const;
 
 export const quoteSteps = [
-  { title: "Tell me what you need", body: "A few lines is plenty." },
+  { title: "Tell us what you need", body: "A few lines is plenty." },
   { title: "Quick call", body: "We talk it through." },
   { title: "Fixed quote", body: "One price and a timeline. Free." },
 ] as const;
@@ -147,10 +149,10 @@ export const faqs = [
 export const enquiryTypes = [...services.map((s) => s.need), "Not sure yet"] as const;
 
 export const about = {
-  heading: "Hi, I'm Luke.",
+  heading: "Hi, we're Solaris Scaling.",
   body: [
-    "I build websites that bring in calls, quotes and customers.",
-    "No templates, no agency. You deal with me from first call to launch.",
+    "We build websites that bring in calls, quotes and customers.",
+    "No templates and no handoffs, from first call to launch.",
   ],
 } as const;
 

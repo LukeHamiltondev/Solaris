@@ -192,12 +192,12 @@ export function CtaBand() {
           Got a project in mind? <span className="text-orbit-200">Let&apos;s talk.</span>
         </h2>
         <p className="mx-auto mt-6 max-w-xl text-lg text-muted">
-          Tell me what you need. You&apos;ll get a fixed quote, free.
+          Tell us what you need. You&apos;ll get a fixed quote, free.
         </p>
         <div className="mt-10 flex flex-wrap justify-center gap-3">
           <ButtonLink href="/contact/">Get a free quote</ButtonLink>
           <ButtonLink href="/work/" variant="ghost">
-            See my work
+            See our work
           </ButtonLink>
         </div>
       </div>
