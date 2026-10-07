@@ -65,7 +65,7 @@ export function Hero() {
                 href="/work/"
                 className="text-[15px] font-semibold text-mist underline decoration-orbit-400/60 underline-offset-[6px] transition-colors hover:decoration-orbit-100"
               >
-                See my work
+                See our work
               </Link>
             </div>
           </div>
@@ -116,7 +116,7 @@ export function Hero() {
             {live ? (
               <span className="text-mist">Saved. On the real site, that change is live in a few minutes.</span>
             ) : (
-              "The stock screen I built for an Irish industrial supplier. Go on, press the buttons."
+              "The stock screen we built for an Irish industrial supplier. Go on, press the buttons."
             )}
             <span className="mt-1 block text-xs">Demo copy: nothing here changes their live site.</span>
           </figcaption>

@@ -11,23 +11,24 @@ export const metadata: Metadata = {
 
 const sections = [
   {
-    heading: "Who I am",
+    heading: "Who we are",
     body: [
-      `${site.name} is run by ${site.owner} in Ireland. I'm responsible for any personal details you share through this site. You can reach me at ${site.email}.`,
+      `${site.name} is run by ${site.owner} in Ireland. We're responsible for any personal details you share through this site. You can reach us at ${site.email}.`,
     ],
   },
   {
-    heading: "What I collect",
+    heading: "What we collect",
     body: [
-      "When you send the quote form or email me, I get the details you choose to give: usually your name, email address, business and what you need. I use them only to reply, prepare a quote and do the work if you go ahead.",
-      "I don't sell or share your details. I keep enquiries for as long as needed to deal with them, and client records for as long as the law requires for accounts.",
+      "When you send the quote form or email us, we get the details you choose to give: usually your name, email address, business and what you need. We use them only to reply, prepare a quote and do the work if you go ahead.",
+      "The quote form is delivered to our inbox by Formspree (formspree.io), which processes it only to pass it on to us.",
+      "We don't sell or share your details. We keep enquiries for as long as needed to deal with them, and client records for as long as the law requires for accounts.",
     ],
   },
   {
     heading: "Cookies and similar storage",
     body: [
       "Essential: the site remembers in your browser whether you've seen the opening animation and what you chose on the cookie banner. This never leaves your device and isn't used to track you.",
-      "Analytics: only if you press “Accept all”. These cookies count visits and show which pages are useful, so I can improve the site. Choosing “Essential only” means none are set.",
+      "Analytics: only if you press “Accept all”. These cookies count visits and show which pages are useful, so we can improve the site. Choosing “Essential only” means none are set.",
     ],
   },
   {
@@ -39,7 +40,7 @@ const sections = [
   {
     heading: "Your rights",
     body: [
-      `You can ask to see, correct or delete the details I hold about you by emailing ${site.email}. If you're unhappy with how I've handled them, you can complain to the Data Protection Commission (dataprotection.ie).`,
+      `You can ask to see, correct or delete the details we hold about you by emailing ${site.email}. If you're unhappy with how we've handled them, you can complain to the Data Protection Commission (dataprotection.ie).`,
     ],
   },
 ];

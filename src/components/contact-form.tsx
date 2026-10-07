@@ -54,12 +54,12 @@ function Choice({ name, options, value, onChange }: {
 }
 
 /**
- * The quote form. There's no server on this static site yet, so sending opens the visitor's email app
- * with everything filled in. Swap `send` for a form service when lead capture is set up.
+ * The quote form. Posts to Formspree, which emails the enquiry to Luke. Without a Formspree endpoint
+ * set (or if sending fails) it falls back to opening the visitor's email app with everything filled in.
  */
 export function ContactForm() {
   const [need, setNeed] = useState<string>("");
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "mailto" | "error">("idle");
 
   // Arriving from a service card preselects that service.
   useEffect(() => {
@@ -68,9 +68,7 @@ export function ContactForm() {
     if (preset && (enquiryTypes as readonly string[]).includes(preset)) setNeed(preset);
   }, []);
 
-  const send = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const data = new FormData(e.currentTarget);
+  const mailto = (data: FormData) => {
     const get = (k: string) => String(data.get(k) ?? "").trim();
     const lines = [
       `Name: ${get("name")}`,
@@ -82,27 +80,45 @@ export function ContactForm() {
     ].filter(Boolean);
     const subject = `Website enquiry from ${get("business") || get("name")}`;
     window.location.href = `mailto:${site.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`${lines.join("\n")}\n\n${get("message")}`)}`;
-    setSent(true);
+    setStatus("mailto");
   };
 
-  if (sent) {
+  const send = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const data = new FormData(e.currentTarget);
+    if (!site.formspree) return mailto(data);
+    data.set("_subject", `Website enquiry from ${String(data.get("business") || data.get("name") || "").trim()}`);
+    setStatus("sending");
+    try {
+      const res = await fetch(site.formspree, { method: "POST", body: data, headers: { Accept: "application/json" } });
+      setStatus(res.ok ? "sent" : "error");
+    } catch {
+      setStatus("error");
+    }
+  };
+
+  if (status === "sent" || status === "mailto") {
     return (
       <div className="flex flex-col items-center rounded-[2rem] border border-white/8 bg-ink-900/70 px-8 py-16 text-center" role="status">
         <OrbitMark intro spin className="size-28" />
         <h2 className="fade-up mt-8 text-3xl font-semibold tracking-tight" style={{ animationDelay: "0.8s" }}>
-          Thanks, that&apos;s on its way.
+          {status === "sent" ? "Thanks, got it." : "Thanks, that\u2019s on its way."}
         </h2>
         <p className="fade-up mt-3 max-w-sm text-muted" style={{ animationDelay: "0.95s" }}>
-          Your email app should have opened with your message ready to send. I&apos;ll reply within one working day.
+          {status === "sent"
+            ? "We\u2019ll reply within one working day."
+            : "Your email app should have opened with your message ready to send."}
         </p>
-        <button
-          type="button"
-          onClick={() => setSent(false)}
-          className="fade-up mt-8 text-sm text-orbit-100 underline underline-offset-4"
-          style={{ animationDelay: "1.1s" }}
-        >
-          Didn&apos;t open? Go back to the form
-        </button>
+        {status === "mailto" && (
+          <button
+            type="button"
+            onClick={() => setStatus("idle")}
+            className="fade-up mt-8 text-sm text-orbit-100 underline underline-offset-4"
+            style={{ animationDelay: "1.1s" }}
+          >
+            Didn&apos;t open? Go back to the form
+          </button>
+        )}
       </div>
     );
   }
@@ -120,13 +136,25 @@ export function ContactForm() {
         <legend className="mb-3 text-sm text-muted">What do you need?</legend>
         <Choice name="need" options={enquiryTypes} value={need} onChange={setNeed} />
       </fieldset>
-      <Field name="message" text="Tell me about your project" area required />
+      <Field name="message" text="Tell us about your project" area required />
+      {/* Spam trap: people never see or fill this; bots do, and Formspree drops those. */}
+      <input type="text" name="_gotcha" tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" />
+      {status === "error" && (
+        <p role="alert" className="text-[15px] text-orbit-100">
+          That didn&apos;t send. Please try again, or email{" "}
+          <a href={`mailto:${site.email}`} className="underline underline-offset-4">
+            {site.email}
+          </a>
+          .
+        </p>
+      )}
       <button
         type="submit"
+        disabled={status === "sending"}
         data-magnetic
-        className="sheen group inline-flex w-full items-center justify-center gap-2 rounded-full bg-orbit-200 px-6 py-4 font-semibold text-ink-950 transition-colors hover:bg-orbit-100 sm:w-auto"
+        className="sheen group inline-flex w-full items-center justify-center gap-2 rounded-full bg-orbit-200 px-6 py-4 font-semibold text-ink-950 transition-colors hover:bg-orbit-100 disabled:opacity-70 sm:w-auto"
       >
-        Send enquiry
+        {status === "sending" ? "Sending\u2026" : "Send enquiry"}
         <Icon name="arrow" className="size-4 transition-transform duration-500 ease-out-expo group-hover:translate-x-1" />
       </button>
     </form>

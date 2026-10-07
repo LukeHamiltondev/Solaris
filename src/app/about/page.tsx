@@ -30,7 +30,7 @@ export default function AboutPage() {
 
       <section className="border-t border-white/6 px-6 py-24">
         <div className="mx-auto max-w-6xl">
-          <SectionHeading title="How I work" />
+          <SectionHeading title="How we work" />
           <PointList items={reasons} className="mt-12 lg:grid-cols-4" />
         </div>
       </section>
